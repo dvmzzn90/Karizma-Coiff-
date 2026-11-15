@@ -7,7 +7,7 @@
 
 ## Personnages
 
-| Personnage | Qui c'est | Personnalité | Façon de parler | Voix prévue (edge-tts) |
+| Personnage | Qui c'est | Personnalité | Façon de parler | Voix edge-tts (si accessible) |
 |---|---|---|---|---|
 | **BOULON** | Petit robot rond, bleu ciel, une antenne avec une boule rouge, gros yeux ronds lumineux. | Enthousiaste, naïf, têtu, déborde d'énergie. | Phrases courtes, beaucoup de « ! », s'emballe vite. | `fr-FR-EloiseNeural` (voix d'enfant), rapide et aiguë : `--rate=+12% --pitch=+12Hz` |
 | **GISÈLE** | Vieille inventrice, chignon gris, grosses lunettes, gilet violet, toujours un journal à la main. | Sèche, blasée, pince-sans-rire… et elle cache un secret. | Répond en deux mots, soupire, hésite quand on la coince (« euh… »). | `fr-CH-ArianeNeural`, plus lente et un peu grave : `--rate=-6% --pitch=-6Hz` |
@@ -82,3 +82,19 @@
 - Secousses d'écran : morsure de baguette, court-circuit, « BOING » de Gisèle, première réplique d'Aspi.
 - Bruitages (synthétisés, pas de musique) : whoosh aux changements de décor, pop au « BOING », grésillement au court-circuit.
 - Sous-titres : 2 à 4 mots, blanc contour noir épais, mot prononcé en jaune, placés juste sous le milieu de l'écran (≈ 58 % de la hauteur).
+
+---
+
+## Voix réellement utilisées dans `video_finale.mp4`
+Le serveur d'edge-tts était bloqué par le réseau de l'environnement de production. Les voix ont donc été
+générées avec **Piper** (voix neuronales françaises locales), avec les timings mot par mot tirés de l'alignement
+phonème/audio du modèle. En relançant `python video/voix.py edge` puis `python video/render.py` sur une machine
+qui a accès à Internet, on obtient la même vidéo avec les voix edge-tts du tableau ci-dessus.
+
+| Personnage | Modèle Piper | Débit | Hauteur | Effet |
+|---|---|---|---|---|
+| BOULON | `fr-siwis-medium` | rapide (length_scale 0,80) | +4,5 demi-tons (aiguë) | léger écho métallique de robot |
+| GISÈLE | `fr-siwis-medium` | posée (1,02) | −2,5 demi-tons (plus grave, plus âgée) | — |
+| ASPI | `fr-gilles-low` (voix masculine) | lent (1,08) | −3 demi-tons (grave) | basses renforcées |
+
+Durée finale : 42,3 s.
