@@ -1,1 +1,5 @@
 __pycache__/
+frames/
+frames_voix/
+audio*.wav
+voice/models/

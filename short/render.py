@@ -290,9 +290,9 @@ def scene(name, t, T):
         for i in range(6):  # traits de vitesse
             yy = 950 + i * 90; xx = (t * 1800 + i * 200) % 1300 - 200
             d.line([(xx, yy), (xx + 180, yy)], fill=(255, 255, 255), width=8)
-        caption(im, "Il avait 15 MINUTES", 330, t - .1, 84)
-        caption(im, "avant son 1er date…", 440, t - .5, 80, hl=(255, 230, 60))
-        caption(im, "et il s'était coupé les cheveux TOUT SEUL", 1720, t - 1.3, 64, hl=(255, 80, 80))
+        caption(im, "Il avait 15 MINUTES", 340, t - .1, 72)
+        caption(im, "avant son 1er date…", 440, t - .5, 66, hl=(255, 230, 60))
+        caption(im, "et il s'était coupé les cheveux TOUT SEUL", 1680, t - 1.3, 54, hl=(255, 80, 80))
         return camera(im, 1 + .06 * t, 540, 1100, shake=4)
     if name == "enter":
         im = SALON.copy().convert("RGBA")
