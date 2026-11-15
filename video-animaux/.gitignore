@@ -1,0 +1,5 @@
+out/parts/
+out/voice_only.wav
+out/audio.wav
+out/*.png
+out/video_noaudio.mp4

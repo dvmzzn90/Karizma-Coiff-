@@ -1,0 +1,158 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Mot,Inter Display Black,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,-1,0,0,0,100,100,0,0,1,8,4,2,60,60,470,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.60,0:00:00.79,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}CE{\fscx100\fscy100}
+Dialogue: 0,0:00:00.79,0:00:01.14,Mot,,0,0,0,,{\c&HFFFFFF&}CE{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}MATIN,{\fscx100\fscy100}
+Dialogue: 0,0:00:01.14,0:00:01.44,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}HUIT{\fscx100\fscy100}
+Dialogue: 0,0:00:01.44,0:00:02.03,Mot,,0,0,0,,{\c&HFFFFFF&}HUIT{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}MILLIARDS{\fscx100\fscy100}
+Dialogue: 0,0:00:02.03,0:00:02.56,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}D'HUMAINS{\fscx100\fscy100}
+Dialogue: 0,0:00:02.56,0:00:02.75,Mot,,0,0,0,,{\c&HFFFFFF&}D'HUMAINS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SE{\fscx100\fscy100}
+Dialogue: 0,0:00:02.75,0:00:03.05,Mot,,0,0,0,,{\c&HFFFFFF&}D'HUMAINS{\fscx100\fscy100} {\c&HFFFFFF&}SE{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SONT{\fscx100\fscy100}
+Dialogue: 0,0:00:03.05,0:00:03.99,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}RÉVEILLÉS…{\fscx100\fscy100}
+Dialogue: 0,0:00:04.09,0:00:04.39,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}AVEC{\fscx100\fscy100}
+Dialogue: 0,0:00:04.39,0:00:04.63,Mot,,0,0,0,,{\c&HFFFFFF&}AVEC{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DES{\fscx100\fscy100}
+Dialogue: 0,0:00:04.63,0:00:05.35,Mot,,0,0,0,,{\c&HFFFFFF&}AVEC{\fscx100\fscy100} {\c&HFFFFFF&}DES{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}GRIFFES.{\fscx100\fscy100}
+Dialogue: 0,0:00:05.35,0:00:05.54,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ET{\fscx100\fscy100}
+Dialogue: 0,0:00:05.54,0:00:05.73,Mot,,0,0,0,,{\c&HFFFFFF&}ET{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SI,{\fscx100\fscy100}
+Dialogue: 0,0:00:05.73,0:00:05.92,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DU{\fscx100\fscy100}
+Dialogue: 0,0:00:05.92,0:00:06.24,Mot,,0,0,0,,{\c&HFFFFFF&}DU{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}JOUR{\fscx100\fscy100}
+Dialogue: 0,0:00:06.24,0:00:06.43,Mot,,0,0,0,,{\c&HFFFFFF&}DU{\fscx100\fscy100} {\c&HFFFFFF&}JOUR{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}AU{\fscx100\fscy100}
+Dialogue: 0,0:00:06.43,0:00:07.04,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LENDEMAIN,{\fscx100\fscy100}
+Dialogue: 0,0:00:07.04,0:00:07.35,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TOUS{\fscx100\fscy100}
+Dialogue: 0,0:00:07.35,0:00:07.60,Mot,,0,0,0,,{\c&HFFFFFF&}TOUS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LES{\fscx100\fscy100}
+Dialogue: 0,0:00:07.60,0:00:08.09,Mot,,0,0,0,,{\c&HFFFFFF&}TOUS{\fscx100\fscy100} {\c&HFFFFFF&}LES{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}HUMAINS{\fscx100\fscy100}
+Dialogue: 0,0:00:08.09,0:00:08.58,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ÉTAIENT{\fscx100\fscy100}
+Dialogue: 0,0:00:08.58,0:00:09.07,Mot,,0,0,0,,{\c&HFFFFFF&}ÉTAIENT{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DEVENUS{\fscx100\fscy100}
+Dialogue: 0,0:00:09.07,0:00:09.26,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}UN{\fscx100\fscy100}
+Dialogue: 0,0:00:09.26,0:00:09.69,Mot,,0,0,0,,{\c&HFFFFFF&}UN{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}ANIMAL{\fscx100\fscy100}
+Dialogue: 0,0:00:09.69,0:00:10.12,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}?{\fscx100\fscy100}
+Dialogue: 0,0:00:10.15,0:00:10.37,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TON{\fscx100\fscy100}
+Dialogue: 0,0:00:10.37,0:00:10.75,Mot,,0,0,0,,{\c&HFFFFFF&}TON{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PATRON{\fscx100\fscy100}
+Dialogue: 0,0:00:10.75,0:00:10.96,Mot,,0,0,0,,{\c&HFFFFFF&}TON{\fscx100\fscy100} {\c&HFFFFFF&}PATRON{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}?{\fscx100\fscy100}
+Dialogue: 0,0:00:10.96,0:00:11.16,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}UN{\fscx100\fscy100}
+Dialogue: 0,0:00:11.16,0:00:11.82,Mot,,0,0,0,,{\c&HFFFFFF&}UN{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}LION.{\fscx100\fscy100}
+Dialogue: 0,0:00:12.30,0:00:12.55,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TON{\fscx100\fscy100}
+Dialogue: 0,0:00:12.55,0:00:12.87,Mot,,0,0,0,,{\c&HFFFFFF&}TON{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PROF{\fscx100\fscy100}
+Dialogue: 0,0:00:12.87,0:00:13.09,Mot,,0,0,0,,{\c&HFFFFFF&}TON{\fscx100\fscy100} {\c&HFFFFFF&}PROF{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}?{\fscx100\fscy100}
+Dialogue: 0,0:00:13.09,0:00:13.26,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}UN{\fscx100\fscy100}
+Dialogue: 0,0:00:13.26,0:00:14.15,Mot,,0,0,0,,{\c&HFFFFFF&}UN{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}PARESSEUX.{\fscx100\fscy100}
+Dialogue: 0,0:00:14.55,0:00:14.77,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ET{\fscx100\fscy100}
+Dialogue: 0,0:00:14.77,0:00:15.41,Mot,,0,0,0,,{\c&HFFFFFF&}ET{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}TOI…{\fscx100\fscy100}
+Dialogue: 0,0:00:15.41,0:00:15.60,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TU{\fscx100\fscy100}
+Dialogue: 0,0:00:15.60,0:00:16.01,Mot,,0,0,0,,{\c&HFFFFFF&}TU{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SERAIS{\fscx100\fscy100}
+Dialogue: 0,0:00:16.01,0:00:16.31,Mot,,0,0,0,,{\c&HFFFFFF&}TU{\fscx100\fscy100} {\c&HFFFFFF&}SERAIS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}QUOI{\fscx100\fscy100}
+Dialogue: 0,0:00:16.31,0:00:16.73,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}?{\fscx100\fscy100}
+Dialogue: 0,0:00:17.20,0:00:17.78,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PROBLÈME{\fscx100\fscy100}
+Dialogue: 0,0:00:17.78,0:00:18.24,Mot,,0,0,0,,{\c&HFFFFFF&}PROBLÈME{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}NUMÉRO{\fscx100\fscy100}
+Dialogue: 0,0:00:18.24,0:00:18.44,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}UN{\fscx100\fscy100}
+Dialogue: 0,0:00:18.44,0:00:18.72,Mot,,0,0,0,,{\c&HFFFFFF&}UN{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}:{\fscx100\fscy100}
+Dialogue: 0,0:00:18.72,0:00:19.04,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PLUS{\fscx100\fscy100}
+Dialogue: 0,0:00:19.04,0:00:19.62,Mot,,0,0,0,,{\c&HFFFFFF&}PLUS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PERSONNE{\fscx100\fscy100}
+Dialogue: 0,0:00:19.62,0:00:19.82,Mot,,0,0,0,,{\c&HFFFFFF&}PLUS{\fscx100\fscy100} {\c&HFFFFFF&}PERSONNE{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}NE{\fscx100\fscy100}
+Dialogue: 0,0:00:19.82,0:00:20.56,Mot,,0,0,0,,{\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}PARLE.{\fscx100\fscy100}
+Dialogue: 0,0:00:20.60,0:00:20.87,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SEPT{\fscx100\fscy100}
+Dialogue: 0,0:00:20.87,0:00:21.18,Mot,,0,0,0,,{\c&HFFFFFF&}SEPT{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}MILLE{\fscx100\fscy100}
+Dialogue: 0,0:00:21.18,0:00:21.95,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LANGUES…{\fscx100\fscy100}
+Dialogue: 0,0:00:22.00,0:00:22.69,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}REMPLACÉES{\fscx100\fscy100}
+Dialogue: 0,0:00:22.69,0:00:22.95,Mot,,0,0,0,,{\c&HFFFFFF&}REMPLACÉES{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PAR{\fscx100\fscy100}
+Dialogue: 0,0:00:22.95,0:00:23.20,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DES{\fscx100\fscy100}
+Dialogue: 0,0:00:23.20,0:00:23.87,Mot,,0,0,0,,{\c&HFFFFFF&}DES{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}CRIS.{\fscx100\fscy100}
+Dialogue: 0,0:00:24.25,0:00:24.43,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}EN{\fscx100\fscy100}
+Dialogue: 0,0:00:24.43,0:00:24.78,Mot,,0,0,0,,{\c&HFFFFFF&}EN{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TROIS{\fscx100\fscy100}
+Dialogue: 0,0:00:24.78,0:00:25.13,Mot,,0,0,0,,{\c&HFFFFFF&}EN{\fscx100\fscy100} {\c&HFFFFFF&}TROIS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}JOURS,{\fscx100\fscy100}
+Dialogue: 0,0:00:25.13,0:00:25.37,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LES{\fscx100\fscy100}
+Dialogue: 0,0:00:25.37,0:00:25.78,Mot,,0,0,0,,{\c&HFFFFFF&}LES{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}VILLES{\fscx100\fscy100}
+Dialogue: 0,0:00:25.78,0:00:26.60,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}S'ÉTEIGNENT.{\fscx100\fscy100}
+Dialogue: 0,0:00:26.60,0:00:26.82,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LES{\fscx100\fscy100}
+Dialogue: 0,0:00:26.82,0:00:27.21,Mot,,0,0,0,,{\c&HFFFFFF&}LES{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}MÉTROS{\fscx100\fscy100}
+Dialogue: 0,0:00:27.21,0:00:28.11,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}S'ARRÊTENT.{\fscx100\fscy100}
+Dialogue: 0,0:00:28.15,0:00:28.31,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ET{\fscx100\fscy100}
+Dialogue: 0,0:00:28.31,0:00:28.51,Mot,,0,0,0,,{\c&HFFFFFF&}ET{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LES{\fscx100\fscy100}
+Dialogue: 0,0:00:28.51,0:00:29.34,Mot,,0,0,0,,{\c&HFFFFFF&}ET{\fscx100\fscy100} {\c&HFFFFFF&}LES{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}CENTRALES…{\fscx100\fscy100}
+Dialogue: 0,0:00:29.34,0:00:29.58,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}N'ONT{\fscx100\fscy100}
+Dialogue: 0,0:00:29.58,0:00:29.83,Mot,,0,0,0,,{\c&HFFFFFF&}N'ONT{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PLUS{\fscx100\fscy100}
+Dialogue: 0,0:00:29.83,0:00:30.27,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PERSONNE{\fscx100\fscy100}
+Dialogue: 0,0:00:30.27,0:00:30.47,Mot,,0,0,0,,{\c&HFFFFFF&}PERSONNE{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}AUX{\fscx100\fscy100}
+Dialogue: 0,0:00:30.47,0:00:31.15,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}COMMANDES.{\fscx100\fscy100}
+Dialogue: 0,0:00:31.15,0:00:31.68,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PROBLÈME{\fscx100\fscy100}
+Dialogue: 0,0:00:31.68,0:00:32.10,Mot,,0,0,0,,{\c&HFFFFFF&}PROBLÈME{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}NUMÉRO{\fscx100\fscy100}
+Dialogue: 0,0:00:32.10,0:00:32.40,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DEUX{\fscx100\fscy100}
+Dialogue: 0,0:00:32.40,0:00:32.65,Mot,,0,0,0,,{\c&HFFFFFF&}DEUX{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}:{\fscx100\fscy100}
+Dialogue: 0,0:00:32.65,0:00:32.82,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LA{\fscx100\fscy100}
+Dialogue: 0,0:00:32.82,0:00:33.18,Mot,,0,0,0,,{\c&HFFFFFF&}LA{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}CHAÎNE{\fscx100\fscy100}
+Dialogue: 0,0:00:33.18,0:00:34.00,Mot,,0,0,0,,{\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}ALIMENTAIRE.{\fscx100\fscy100}
+Dialogue: 0,0:00:34.00,0:00:34.19,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SI{\fscx100\fscy100}
+Dialogue: 0,0:00:34.19,0:00:34.44,Mot,,0,0,0,,{\c&HFFFFFF&}SI{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TON{\fscx100\fscy100}
+Dialogue: 0,0:00:34.44,0:00:34.86,Mot,,0,0,0,,{\c&HFFFFFF&}SI{\fscx100\fscy100} {\c&HFFFFFF&}TON{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}VOISIN{\fscx100\fscy100}
+Dialogue: 0,0:00:34.86,0:00:35.11,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}EST{\fscx100\fscy100}
+Dialogue: 0,0:00:35.11,0:00:35.53,Mot,,0,0,0,,{\c&HFFFFFF&}EST{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DEVENU{\fscx100\fscy100}
+Dialogue: 0,0:00:35.53,0:00:35.72,Mot,,0,0,0,,{\c&HFFFFFF&}EST{\fscx100\fscy100} {\c&HFFFFFF&}DEVENU{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}UN{\fscx100\fscy100}
+Dialogue: 0,0:00:35.72,0:00:36.39,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TIGRE…{\fscx100\fscy100}
+Dialogue: 0,0:00:36.39,0:00:36.58,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TU{\fscx100\fscy100}
+Dialogue: 0,0:00:36.58,0:00:36.76,Mot,,0,0,0,,{\c&HFFFFFF&}TU{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ES{\fscx100\fscy100}
+Dialogue: 0,0:00:36.76,0:00:37.30,Mot,,0,0,0,,{\c&HFFFFFF&}TU{\fscx100\fscy100} {\c&HFFFFFF&}ES{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PEUT-ÊTRE{\fscx100\fscy100}
+Dialogue: 0,0:00:37.30,0:00:37.54,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SON{\fscx100\fscy100}
+Dialogue: 0,0:00:37.54,0:00:38.25,Mot,,0,0,0,,{\c&HFFFFFF&}SON{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}DÎNER.{\fscx100\fscy100}
+Dialogue: 0,0:00:38.60,0:00:38.86,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}MAIS{\fscx100\fscy100}
+Dialogue: 0,0:00:38.86,0:00:39.27,Mot,,0,0,0,,{\c&HFFFFFF&}MAIS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PENDANT{\fscx100\fscy100}
+Dialogue: 0,0:00:39.27,0:00:39.43,Mot,,0,0,0,,{\c&HFFFFFF&}MAIS{\fscx100\fscy100} {\c&HFFFFFF&}PENDANT{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}CE{\fscx100\fscy100}
+Dialogue: 0,0:00:39.43,0:00:40.09,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TEMPS…{\fscx100\fscy100}
+Dialogue: 0,0:00:40.20,0:00:40.40,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LA{\fscx100\fscy100}
+Dialogue: 0,0:00:40.40,0:00:40.93,Mot,,0,0,0,,{\c&HFFFFFF&}LA{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PLANÈTE{\fscx100\fscy100}
+Dialogue: 0,0:00:40.93,0:00:41.81,Mot,,0,0,0,,{\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}RESPIRE.{\fscx100\fscy100}
+Dialogue: 0,0:00:42.20,0:00:42.41,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}EN{\fscx100\fscy100}
+Dialogue: 0,0:00:42.41,0:00:42.81,Mot,,0,0,0,,{\c&HFFFFFF&}EN{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}VINGT{\fscx100\fscy100}
+Dialogue: 0,0:00:42.81,0:00:43.08,Mot,,0,0,0,,{\c&HFFFFFF&}EN{\fscx100\fscy100} {\c&HFFFFFF&}VINGT{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ANS,{\fscx100\fscy100}
+Dialogue: 0,0:00:43.08,0:00:43.29,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LA{\fscx100\fscy100}
+Dialogue: 0,0:00:43.29,0:00:43.69,Mot,,0,0,0,,{\c&HFFFFFF&}LA{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}FORÊT{\fscx100\fscy100}
+Dialogue: 0,0:00:43.69,0:00:44.22,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}REPREND{\fscx100\fscy100}
+Dialogue: 0,0:00:44.22,0:00:44.97,Mot,,0,0,0,,{\c&HFFFFFF&}REPREND{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PARIS.{\fscx100\fscy100}
+Dialogue: 0,0:00:46.40,0:00:46.56,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ET{\fscx100\fscy100}
+Dialogue: 0,0:00:46.56,0:00:46.77,Mot,,0,0,0,,{\c&HFFFFFF&}ET{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LES{\fscx100\fscy100}
+Dialogue: 0,0:00:46.77,0:00:47.07,Mot,,0,0,0,,{\c&HFFFFFF&}ET{\fscx100\fscy100} {\c&HFFFFFF&}LES{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}VRAIS{\fscx100\fscy100}
+Dialogue: 0,0:00:47.07,0:00:47.48,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ANIMAUX{\fscx100\fscy100}
+Dialogue: 0,0:00:47.48,0:00:47.79,Mot,,0,0,0,,{\c&HFFFFFF&}ANIMAUX{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}?{\fscx100\fscy100}
+Dialogue: 0,0:00:47.79,0:00:48.01,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ILS{\fscx100\fscy100}
+Dialogue: 0,0:00:48.01,0:00:48.19,Mot,,0,0,0,,{\c&HFFFFFF&}ILS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}NE{\fscx100\fscy100}
+Dialogue: 0,0:00:48.19,0:00:48.47,Mot,,0,0,0,,{\c&HFFFFFF&}ILS{\fscx100\fscy100} {\c&HFFFFFF&}NE{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}NOUS{\fscx100\fscy100}
+Dialogue: 0,0:00:48.47,0:00:49.23,Mot,,0,0,0,,{\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}RECONNAISSENT{\fscx100\fscy100}
+Dialogue: 0,0:00:49.23,0:00:49.51,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}MÊME{\fscx100\fscy100}
+Dialogue: 0,0:00:49.51,0:00:50.00,Mot,,0,0,0,,{\c&HFFFFFF&}MÊME{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PAS.{\fscx100\fscy100}
+Dialogue: 0,0:00:50.00,0:00:50.33,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}POUR{\fscx100\fscy100}
+Dialogue: 0,0:00:50.33,0:00:50.59,Mot,,0,0,0,,{\c&HFFFFFF&}POUR{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}EUX,{\fscx100\fscy100}
+Dialogue: 0,0:00:50.59,0:00:50.79,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ON{\fscx100\fscy100}
+Dialogue: 0,0:00:50.79,0:00:51.05,Mot,,0,0,0,,{\c&HFFFFFF&}ON{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}EST{\fscx100\fscy100}
+Dialogue: 0,0:00:51.05,0:00:51.79,Mot,,0,0,0,,{\c&HFFFFFF&}ON{\fscx100\fscy100} {\c&HFFFFFF&}EST{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}JUSTE…{\fscx100\fscy100}
+Dialogue: 0,0:00:51.84,0:00:52.05,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DES{\fscx100\fscy100}
+Dialogue: 0,0:00:52.05,0:00:52.50,Mot,,0,0,0,,{\c&HFFFFFF&}DES{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}NOUVEAUX{\fscx100\fscy100}
+Dialogue: 0,0:00:52.50,0:00:53.25,Mot,,0,0,0,,{\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}VOISINS.{\fscx100\fscy100}
+Dialogue: 0,0:00:53.55,0:00:53.91,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ALORS{\fscx100\fscy100}
+Dialogue: 0,0:00:53.91,0:00:54.09,Mot,,0,0,0,,{\c&HFFFFFF&}ALORS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}LA{\fscx100\fscy100}
+Dialogue: 0,0:00:54.09,0:00:54.45,Mot,,0,0,0,,{\c&HFFFFFF&}ALORS{\fscx100\fscy100} {\c&HFFFFFF&}LA{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}VRAIE{\fscx100\fscy100}
+Dialogue: 0,0:00:54.45,0:00:55.34,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}QUESTION…{\fscx100\fscy100}
+Dialogue: 0,0:00:55.44,0:00:55.75,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}EST-CE{\fscx100\fscy100}
+Dialogue: 0,0:00:55.75,0:00:56.01,Mot,,0,0,0,,{\c&HFFFFFF&}EST-CE{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}QU'ON{\fscx100\fscy100}
+Dialogue: 0,0:00:56.01,0:00:56.37,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SERAIT{\fscx100\fscy100}
+Dialogue: 0,0:00:56.37,0:00:56.63,Mot,,0,0,0,,{\c&HFFFFFF&}SERAIT{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}PLUS{\fscx100\fscy100}
+Dialogue: 0,0:00:56.63,0:00:57.40,Mot,,0,0,0,,{\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}HEUREUX…{\fscx100\fscy100}
+Dialogue: 0,0:00:57.45,0:00:57.70,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SANS{\fscx100\fscy100}
+Dialogue: 0,0:00:57.70,0:00:57.95,Mot,,0,0,0,,{\c&HFFFFFF&}SANS{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}ÊTRE{\fscx100\fscy100}
+Dialogue: 0,0:00:57.95,0:00:58.34,Mot,,0,0,0,,{\c&HFFFFFF&}SANS{\fscx100\fscy100} {\c&HFFFFFF&}ÊTRE{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}HUMAINS{\fscx100\fscy100}
+Dialogue: 0,0:00:58.34,0:00:58.75,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}?{\fscx100\fscy100}
+Dialogue: 0,0:01:00.35,0:01:00.72,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}DIS-MOI{\fscx100\fscy100}
+Dialogue: 0,0:01:00.72,0:01:00.88,Mot,,0,0,0,,{\c&HFFFFFF&}DIS-MOI{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}EN{\fscx100\fscy100}
+Dialogue: 0,0:01:00.88,0:01:01.85,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}COMMENTAIRE…{\fscx100\fscy100}
+Dialogue: 0,0:01:01.85,0:01:02.18,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}QUEL{\fscx100\fscy100}
+Dialogue: 0,0:01:02.18,0:01:02.64,Mot,,0,0,0,,{\c&HFFFFFF&}QUEL{\fscx100\fscy100} {\c&H00E5FF&}{\fscx145\fscy145\t(0,120,\fscx112\fscy112)}ANIMAL{\fscx100\fscy100}
+Dialogue: 0,0:01:02.64,0:01:02.85,Mot,,0,0,0,,{\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}TU{\fscx100\fscy100}
+Dialogue: 0,0:01:02.85,0:01:03.66,Mot,,0,0,0,,{\c&HFFFFFF&}TU{\fscx100\fscy100} {\c&HFFFFFF&}{\fscx128\fscy128\t(0,90,\fscx100\fscy100)}SERAIS.{\fscx100\fscy100}
