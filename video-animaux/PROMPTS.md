@@ -28,9 +28,9 @@ Suffixe commun à ajouter à chaque prompt :
 ## Voix off
 
 La version fournie utilise une voix de synthèse hors ligne (espeak-ng + MBROLA « fr1 »). Elle est
-grave et posée mais reste robotique. Pour la voix documentaire finale, enregistrez ou générez
+grave et posée, égalisée pour la netteté (présence 2,8 kHz, coupe des bas-médiums, compression légère), mais reste synthétique. Pour la voix documentaire finale, enregistrez ou générez
 (ElevenLabs, voix masculine grave et mystérieuse) **chaque réplique séparément** au nom
-`voice/line01.wav` … `voice/line18.wav`, puis relancez `python3 src/make_video.py`. Le pipeline
+`voice/line01.wav` … `voice/line19.wav`, puis relancez `python3 src/make_video.py`. Le pipeline
 recale automatiquement chaque réplique à son instant et recalcule les sous-titres mot par mot.
 
 | # | Début | Réplique | Mot-clé (jaune) |
@@ -46,13 +46,14 @@ recale automatiquement chaque réplique à son instant et recalcule les sous-tit
 | 09 | 26,6 s | Les métros s'arrêtent. | métros |
 | 10 | 28,15 s | Et les centrales… n'ont plus personne aux commandes. | centrales |
 | 11 | 31,15 s | Problème numéro deux : la chaîne alimentaire. | alimentaire |
-| 12 | 34,0 s | Si ton voisin est devenu un tigre… tu es peut-être son dîner. | dîner |
+| 12 | 33,9 s | Si ton voisin est devenu un tigre… tu es peut-être son dîner. | dîner |
 | 13 | 38,6 s | Mais pendant ce temps… la planète respire. | respire |
 | 14 | 42,2 s | En vingt ans, la forêt reprend Paris. | forêt |
 | 15 | 46,4 s | Et les vrais animaux ? Ils ne nous reconnaissent même pas. | reconnaissent |
 | 16 | 50,0 s | Pour eux, on est juste… des nouveaux voisins. | voisins |
 | 17 | 53,55 s | Alors la vraie question… est-ce qu'on serait plus heureux… sans être humains ? | heureux |
-| 18 | 60,35 s | Dis-moi en commentaire… quel animal tu serais. | animal |
+| 18 | 60,15 s | Abonne-toi… | abonne-toi |
+| 19 | 61,15 s | et dis-moi en commentaire… quel animal tu serais. | animal |
 
 ## Sons (tous synthétisés dans `src/audio.py`)
 

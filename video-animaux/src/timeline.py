@@ -25,14 +25,15 @@ LINES = [
     dict(plan=5, start=26.6, kw="métros", segs=[("Les métros s'arrêtent.", 0.0)]),
     dict(plan=5, start=28.15, kw="centrales", segs=[("Et les centrales…", 0.35), ("n'ont plus personne aux commandes.", 0.0)]),
     dict(plan=6, start=31.15, kw="alimentaire", segs=[("Problème numéro deux :", 0.2), ("la chaîne alimentaire.", 0.0)]),
-    dict(plan=6, start=34.0, kw="dîner", segs=[("Si ton voisin est devenu un tigre…", 0.3), ("tu es peut-être son dîner.", 0.0)]),
+    dict(plan=6, start=33.9, kw="dîner", segs=[("Si ton voisin est devenu un tigre…", 0.2), ("tu es peut-être son dîner.", 0.0)]),
     dict(plan=7, start=38.6, kw="respire", segs=[("Mais pendant ce temps…", 0.45), ("la planète respire.", 0.0)]),
     dict(plan=7, start=42.2, kw="forêt", segs=[("En vingt ans, la forêt reprend Paris.", 0.0)]),
     dict(plan=8, start=46.4, kw="reconnaissent", segs=[("Et les vrais animaux ?", 0.25), ("Ils ne nous reconnaissent même pas.", 0.0)]),
     dict(plan=8, start=50.0, kw="voisins", segs=[("Pour eux, on est juste…", 0.4), ("des nouveaux voisins.", 0.0)]),
     dict(plan=9, start=53.55, kw="heureux", segs=[("Alors la vraie question…", 0.45), ("est-ce qu'on serait plus heureux…", 0.4),
                                              ("sans être humains ?", 0.0)]),
-    dict(plan=10, start=60.35, kw="animal", segs=[("Dis-moi en commentaire…", 0.35), ("quel animal tu serais.", 0.0)]),
+    dict(plan=10, start=60.15, kw="abonne-toi", segs=[("Abonne-toi…", 0.2)]),
+    dict(plan=10, start=61.15, kw="animal", segs=[("et dis-moi en commentaire…", 0.3), ("quel animal tu serais.", 0.0)]),
 ]
 
 # --- Plans -----------------------------------------------------------------

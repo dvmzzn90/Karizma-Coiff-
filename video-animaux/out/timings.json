@@ -17,48 +17,48 @@
   {
    "w": "huit",
    "start": 1.143,
-   "end": 1.444,
+   "end": 1.443,
    "line": 0,
    "kw": false
   },
   {
    "w": "milliards",
-   "start": 1.444,
-   "end": 2.033,
+   "start": 1.443,
+   "end": 2.032,
    "line": 0,
    "kw": false
   },
   {
    "w": "d'humains",
-   "start": 2.033,
-   "end": 2.565,
+   "start": 2.032,
+   "end": 2.563,
    "line": 0,
    "kw": false
   },
   {
    "w": "se",
-   "start": 2.565,
-   "end": 2.749,
+   "start": 2.563,
+   "end": 2.748,
    "line": 0,
    "kw": false
   },
   {
    "w": "sont",
-   "start": 2.749,
-   "end": 3.05,
+   "start": 2.748,
+   "end": 3.048,
    "line": 0,
    "kw": false
   },
   {
    "w": "réveillés…",
-   "start": 3.05,
-   "end": 3.639,
+   "start": 3.048,
+   "end": 3.637,
    "line": 0,
    "kw": false
   },
   {
    "w": "avec",
-   "start": 4.089,
+   "start": 4.087,
    "end": 4.389,
    "line": 0,
    "kw": false
@@ -66,181 +66,181 @@
   {
    "w": "des",
    "start": 4.389,
-   "end": 4.631,
+   "end": 4.633,
    "line": 0,
    "kw": false
   },
   {
    "w": "griffes.",
-   "start": 4.631,
-   "end": 5.103,
+   "start": 4.633,
+   "end": 5.109,
    "line": 0,
    "kw": true
   },
   {
    "w": "Et",
    "start": 5.35,
-   "end": 5.541,
+   "end": 5.543,
    "line": 1,
    "kw": false
   },
   {
    "w": "si,",
-   "start": 5.541,
-   "end": 5.733,
+   "start": 5.543,
+   "end": 5.735,
    "line": 1,
    "kw": false
   },
   {
    "w": "du",
-   "start": 5.733,
-   "end": 5.924,
+   "start": 5.735,
+   "end": 5.928,
    "line": 1,
    "kw": false
   },
   {
    "w": "jour",
-   "start": 5.924,
-   "end": 6.235,
+   "start": 5.928,
+   "end": 6.241,
    "line": 1,
    "kw": false
   },
   {
    "w": "au",
-   "start": 6.235,
-   "end": 6.427,
+   "start": 6.241,
+   "end": 6.433,
    "line": 1,
    "kw": false
   },
   {
    "w": "lendemain,",
-   "start": 6.427,
-   "end": 7.037,
+   "start": 6.433,
+   "end": 7.047,
    "line": 1,
    "kw": false
   },
   {
    "w": "tous",
-   "start": 7.037,
-   "end": 7.348,
+   "start": 7.047,
+   "end": 7.36,
    "line": 1,
    "kw": false
   },
   {
    "w": "les",
-   "start": 7.348,
-   "end": 7.6,
+   "start": 7.36,
+   "end": 7.613,
    "line": 1,
    "kw": false
   },
   {
    "w": "humains",
-   "start": 7.6,
-   "end": 8.09,
+   "start": 7.613,
+   "end": 8.107,
    "line": 1,
    "kw": false
   },
   {
    "w": "étaient",
-   "start": 8.09,
-   "end": 8.581,
+   "start": 8.107,
+   "end": 8.6,
    "line": 1,
    "kw": false
   },
   {
    "w": "devenus",
-   "start": 8.581,
-   "end": 9.071,
+   "start": 8.6,
+   "end": 9.094,
    "line": 1,
    "kw": false
   },
   {
    "w": "un",
-   "start": 9.071,
-   "end": 9.263,
+   "start": 9.094,
+   "end": 9.287,
    "line": 1,
    "kw": false
   },
   {
    "w": "animal",
-   "start": 9.263,
-   "end": 9.693,
+   "start": 9.287,
+   "end": 9.72,
    "line": 1,
    "kw": true
   },
   {
    "w": "?",
-   "start": 9.693,
-   "end": 9.765,
+   "start": 9.72,
+   "end": 9.792,
    "line": 1,
    "kw": false
   },
   {
    "w": "Ton",
    "start": 10.15,
-   "end": 10.371,
+   "end": 10.373,
    "line": 2,
    "kw": false
   },
   {
    "w": "patron",
-   "start": 10.371,
-   "end": 10.749,
+   "start": 10.373,
+   "end": 10.755,
    "line": 2,
    "kw": false
   },
   {
    "w": "?",
-   "start": 10.749,
-   "end": 10.812,
+   "start": 10.755,
+   "end": 10.819,
    "line": 2,
    "kw": false
   },
   {
    "w": "Un",
-   "start": 10.962,
-   "end": 11.156,
+   "start": 10.969,
+   "end": 11.162,
    "line": 2,
    "kw": false
   },
   {
    "w": "lion.",
-   "start": 11.156,
-   "end": 11.472,
+   "start": 11.162,
+   "end": 11.475,
    "line": 2,
    "kw": true
   },
   {
    "w": "Ton",
    "start": 12.3,
-   "end": 12.554,
+   "end": 12.558,
    "line": 3,
    "kw": false
   },
   {
    "w": "prof",
-   "start": 12.554,
-   "end": 12.869,
+   "start": 12.558,
+   "end": 12.877,
    "line": 3,
    "kw": false
   },
   {
    "w": "?",
-   "start": 12.869,
-   "end": 12.942,
+   "start": 12.877,
+   "end": 12.951,
    "line": 3,
    "kw": false
   },
   {
    "w": "Un",
-   "start": 13.092,
-   "end": 13.261,
+   "start": 13.101,
+   "end": 13.267,
    "line": 3,
    "kw": false
   },
   {
    "w": "paresseux.",
-   "start": 13.261,
+   "start": 13.267,
    "end": 13.798,
    "line": 3,
    "kw": true
@@ -248,147 +248,147 @@
   {
    "w": "Et",
    "start": 14.55,
-   "end": 14.772,
+   "end": 14.773,
    "line": 4,
    "kw": false
   },
   {
    "w": "toi…",
-   "start": 14.772,
-   "end": 15.063,
+   "start": 14.773,
+   "end": 15.067,
    "line": 4,
    "kw": true
   },
   {
    "w": "tu",
-   "start": 15.413,
-   "end": 15.598,
+   "start": 15.417,
+   "end": 15.605,
    "line": 4,
    "kw": false
   },
   {
    "w": "serais",
-   "start": 15.598,
-   "end": 16.013,
+   "start": 15.605,
+   "end": 16.027,
    "line": 4,
    "kw": false
   },
   {
    "w": "quoi",
-   "start": 16.013,
-   "end": 16.313,
+   "start": 16.027,
+   "end": 16.333,
    "line": 4,
    "kw": false
   },
   {
    "w": "?",
-   "start": 16.313,
-   "end": 16.382,
+   "start": 16.333,
+   "end": 16.403,
    "line": 4,
    "kw": false
   },
   {
    "w": "Problème",
    "start": 17.2,
-   "end": 17.783,
+   "end": 17.775,
    "line": 5,
    "kw": false
   },
   {
    "w": "numéro",
-   "start": 17.783,
-   "end": 18.24,
+   "start": 17.775,
+   "end": 18.225,
    "line": 5,
    "kw": false
   },
   {
    "w": "un",
-   "start": 18.24,
-   "end": 18.443,
+   "start": 18.225,
+   "end": 18.425,
    "line": 5,
    "kw": false
   },
   {
    "w": ":",
-   "start": 18.443,
-   "end": 18.519,
+   "start": 18.425,
+   "end": 18.5,
    "line": 5,
    "kw": false
   },
   {
    "w": "plus",
-   "start": 18.719,
-   "end": 19.044,
+   "start": 18.7,
+   "end": 19.03,
    "line": 5,
    "kw": false
   },
   {
    "w": "personne",
-   "start": 19.044,
-   "end": 19.619,
+   "start": 19.03,
+   "end": 19.614,
    "line": 5,
    "kw": false
   },
   {
    "w": "ne",
-   "start": 19.619,
-   "end": 19.819,
+   "start": 19.614,
+   "end": 19.817,
    "line": 5,
    "kw": false
   },
   {
    "w": "parle.",
-   "start": 19.819,
-   "end": 20.206,
+   "start": 19.817,
+   "end": 20.211,
    "line": 5,
    "kw": true
   },
   {
    "w": "Sept",
    "start": 20.6,
-   "end": 20.866,
+   "end": 20.869,
    "line": 6,
    "kw": false
   },
   {
    "w": "mille",
-   "start": 20.866,
-   "end": 21.183,
+   "start": 20.869,
+   "end": 21.189,
    "line": 6,
    "kw": false
   },
   {
    "w": "langues…",
-   "start": 21.183,
-   "end": 21.602,
+   "start": 21.189,
+   "end": 21.612,
    "line": 6,
    "kw": false
   },
   {
    "w": "remplacées",
-   "start": 22.002,
-   "end": 22.688,
+   "start": 22.012,
+   "end": 22.698,
    "line": 6,
    "kw": false
   },
   {
    "w": "par",
-   "start": 22.688,
-   "end": 22.945,
+   "start": 22.698,
+   "end": 22.955,
    "line": 6,
    "kw": false
   },
   {
    "w": "des",
-   "start": 22.945,
-   "end": 23.202,
+   "start": 22.955,
+   "end": 23.212,
    "line": 6,
    "kw": false
   },
   {
    "w": "cris.",
-   "start": 23.202,
-   "end": 23.521,
+   "start": 23.212,
+   "end": 23.53,
    "line": 6,
    "kw": true
   },
@@ -430,217 +430,217 @@
   {
    "w": "s'éteignent.",
    "start": 25.776,
-   "end": 26.409,
+   "end": 26.41,
    "line": 7,
    "kw": false
   },
   {
    "w": "Les",
    "start": 26.6,
-   "end": 26.825,
+   "end": 26.822,
    "line": 8,
    "kw": false
   },
   {
    "w": "métros",
-   "start": 26.825,
-   "end": 27.21,
+   "start": 26.822,
+   "end": 27.201,
    "line": 8,
    "kw": true
   },
   {
    "w": "s'arrêtent.",
-   "start": 27.21,
-   "end": 27.756,
+   "start": 27.201,
+   "end": 27.739,
    "line": 8,
    "kw": false
   },
   {
    "w": "Et",
    "start": 28.15,
-   "end": 28.307,
+   "end": 28.308,
    "line": 9,
    "kw": false
   },
   {
    "w": "les",
-   "start": 28.307,
-   "end": 28.514,
+   "start": 28.308,
+   "end": 28.515,
    "line": 9,
    "kw": false
   },
   {
    "w": "centrales…",
-   "start": 28.514,
-   "end": 29.016,
+   "start": 28.515,
+   "end": 29.018,
    "line": 9,
    "kw": true
   },
   {
    "w": "n'ont",
    "start": 29.336,
-   "end": 29.584,
+   "end": 29.583,
    "line": 9,
    "kw": false
   },
   {
    "w": "plus",
-   "start": 29.584,
-   "end": 29.832,
+   "start": 29.583,
+   "end": 29.83,
    "line": 9,
    "kw": false
   },
   {
    "w": "personne",
-   "start": 29.832,
-   "end": 30.27,
+   "start": 29.83,
+   "end": 30.266,
    "line": 9,
    "kw": false
   },
   {
    "w": "aux",
-   "start": 30.27,
-   "end": 30.471,
+   "start": 30.266,
+   "end": 30.466,
    "line": 9,
    "kw": false
   },
   {
    "w": "commandes.",
-   "start": 30.471,
-   "end": 30.957,
+   "start": 30.466,
+   "end": 30.95,
    "line": 9,
    "kw": false
   },
   {
    "w": "Problème",
    "start": 31.15,
-   "end": 31.681,
+   "end": 31.654,
    "line": 10,
    "kw": false
   },
   {
    "w": "numéro",
-   "start": 31.681,
-   "end": 32.096,
+   "start": 31.654,
+   "end": 32.049,
    "line": 10,
    "kw": false
   },
   {
    "w": "deux",
-   "start": 32.096,
-   "end": 32.397,
+   "start": 32.049,
+   "end": 32.334,
    "line": 10,
    "kw": false
   },
   {
    "w": ":",
-   "start": 32.397,
-   "end": 32.466,
+   "start": 32.334,
+   "end": 32.399,
    "line": 10,
    "kw": false
   },
   {
    "w": "la",
-   "start": 32.653,
-   "end": 32.816,
+   "start": 32.58,
+   "end": 32.742,
    "line": 10,
    "kw": false
   },
   {
    "w": "chaîne",
-   "start": 32.816,
-   "end": 33.183,
+   "start": 32.742,
+   "end": 33.105,
    "line": 10,
    "kw": false
   },
   {
    "w": "alimentaire.",
-   "start": 33.183,
-   "end": 33.805,
+   "start": 33.105,
+   "end": 33.721,
    "line": 10,
    "kw": true
   },
   {
    "w": "Si",
-   "start": 34.0,
-   "end": 34.189,
+   "start": 33.9,
+   "end": 34.093,
    "line": 11,
    "kw": false
   },
   {
    "w": "ton",
-   "start": 34.189,
-   "end": 34.437,
+   "start": 34.093,
+   "end": 34.346,
    "line": 11,
    "kw": false
   },
   {
    "w": "voisin",
-   "start": 34.437,
-   "end": 34.862,
+   "start": 34.346,
+   "end": 34.78,
    "line": 11,
    "kw": false
   },
   {
    "w": "est",
-   "start": 34.862,
-   "end": 35.11,
+   "start": 34.78,
+   "end": 35.034,
    "line": 11,
    "kw": false
   },
   {
    "w": "devenu",
-   "start": 35.11,
-   "end": 35.535,
+   "start": 35.034,
+   "end": 35.468,
    "line": 11,
    "kw": false
   },
   {
    "w": "un",
-   "start": 35.535,
-   "end": 35.724,
+   "start": 35.468,
+   "end": 35.661,
    "line": 11,
    "kw": false
   },
   {
    "w": "tigre…",
-   "start": 35.724,
-   "end": 36.09,
+   "start": 35.661,
+   "end": 36.034,
    "line": 11,
    "kw": false
   },
   {
    "w": "tu",
-   "start": 36.39,
-   "end": 36.576,
+   "start": 36.234,
+   "end": 36.425,
    "line": 11,
    "kw": false
   },
   {
    "w": "es",
-   "start": 36.576,
-   "end": 36.762,
+   "start": 36.425,
+   "end": 36.615,
    "line": 11,
    "kw": false
   },
   {
    "w": "peut-être",
-   "start": 36.762,
-   "end": 37.297,
+   "start": 36.615,
+   "end": 37.162,
    "line": 11,
    "kw": false
   },
   {
    "w": "son",
-   "start": 37.297,
-   "end": 37.541,
+   "start": 37.162,
+   "end": 37.412,
    "line": 11,
    "kw": false
   },
   {
    "w": "dîner.",
-   "start": 37.541,
-   "end": 37.902,
+   "start": 37.412,
+   "end": 37.78,
    "line": 11,
    "kw": true
   },
@@ -661,374 +661,388 @@
   {
    "w": "ce",
    "start": 39.273,
-   "end": 39.433,
+   "end": 39.434,
    "line": 12,
    "kw": false
   },
   {
    "w": "temps…",
-   "start": 39.433,
-   "end": 39.745,
+   "start": 39.434,
+   "end": 39.746,
    "line": 12,
    "kw": false
   },
   {
    "w": "la",
-   "start": 40.195,
-   "end": 40.401,
+   "start": 40.196,
+   "end": 40.402,
    "line": 12,
    "kw": false
   },
   {
    "w": "planète",
-   "start": 40.401,
-   "end": 40.928,
+   "start": 40.402,
+   "end": 40.93,
    "line": 12,
    "kw": false
   },
   {
    "w": "respire.",
-   "start": 40.928,
-   "end": 41.456,
+   "start": 40.93,
+   "end": 41.458,
    "line": 12,
    "kw": true
   },
   {
    "w": "En",
    "start": 42.2,
-   "end": 42.407,
+   "end": 42.408,
    "line": 13,
    "kw": false
   },
   {
    "w": "vingt",
-   "start": 42.407,
-   "end": 42.808,
+   "start": 42.408,
+   "end": 42.81,
    "line": 13,
    "kw": false
   },
   {
    "w": "ans,",
-   "start": 42.808,
-   "end": 43.08,
+   "start": 42.81,
+   "end": 43.083,
    "line": 13,
    "kw": false
   },
   {
    "w": "la",
-   "start": 43.08,
-   "end": 43.287,
+   "start": 43.083,
+   "end": 43.291,
    "line": 13,
    "kw": false
   },
   {
    "w": "forêt",
-   "start": 43.287,
-   "end": 43.688,
+   "start": 43.291,
+   "end": 43.693,
    "line": 13,
    "kw": true
   },
   {
    "w": "reprend",
-   "start": 43.688,
-   "end": 44.218,
+   "start": 43.693,
+   "end": 44.226,
    "line": 13,
    "kw": false
   },
   {
    "w": "Paris.",
-   "start": 44.218,
-   "end": 44.62,
+   "start": 44.226,
+   "end": 44.628,
    "line": 13,
    "kw": false
   },
   {
    "w": "Et",
    "start": 46.4,
-   "end": 46.558,
+   "end": 46.561,
    "line": 14,
    "kw": false
   },
   {
    "w": "les",
-   "start": 46.558,
-   "end": 46.766,
+   "start": 46.561,
+   "end": 46.772,
    "line": 14,
    "kw": false
   },
   {
    "w": "vrais",
-   "start": 46.766,
-   "end": 47.074,
+   "start": 46.772,
+   "end": 47.084,
    "line": 14,
    "kw": false
   },
   {
    "w": "animaux",
-   "start": 47.074,
-   "end": 47.48,
+   "start": 47.084,
+   "end": 47.497,
    "line": 14,
    "kw": false
   },
   {
    "w": "?",
-   "start": 47.48,
-   "end": 47.539,
+   "start": 47.497,
+   "end": 47.557,
    "line": 14,
    "kw": false
   },
   {
    "w": "Ils",
-   "start": 47.789,
-   "end": 48.014,
+   "start": 47.807,
+   "end": 48.034,
    "line": 14,
    "kw": false
   },
   {
    "w": "ne",
-   "start": 48.014,
-   "end": 48.186,
+   "start": 48.034,
+   "end": 48.207,
    "line": 14,
    "kw": false
   },
   {
    "w": "nous",
-   "start": 48.186,
-   "end": 48.465,
+   "start": 48.207,
+   "end": 48.487,
    "line": 14,
    "kw": false
   },
   {
    "w": "reconnaissent",
-   "start": 48.465,
-   "end": 49.228,
+   "start": 48.487,
+   "end": 49.253,
    "line": 14,
    "kw": true
   },
   {
    "w": "même",
-   "start": 49.228,
-   "end": 49.507,
+   "start": 49.253,
+   "end": 49.533,
    "line": 14,
    "kw": false
   },
   {
    "w": "pas.",
-   "start": 49.507,
-   "end": 49.732,
+   "start": 49.533,
+   "end": 49.76,
    "line": 14,
    "kw": false
   },
   {
    "w": "Pour",
    "start": 50.0,
-   "end": 50.326,
+   "end": 50.331,
    "line": 15,
    "kw": false
   },
   {
    "w": "eux,",
-   "start": 50.326,
-   "end": 50.588,
+   "start": 50.331,
+   "end": 50.598,
    "line": 15,
    "kw": false
   },
   {
    "w": "on",
-   "start": 50.588,
-   "end": 50.789,
+   "start": 50.598,
+   "end": 50.802,
    "line": 15,
    "kw": false
   },
   {
    "w": "est",
-   "start": 50.789,
-   "end": 51.052,
+   "start": 50.802,
+   "end": 51.069,
    "line": 15,
    "kw": false
   },
   {
    "w": "juste…",
-   "start": 51.052,
-   "end": 51.44,
+   "start": 51.069,
+   "end": 51.463,
    "line": 15,
    "kw": false
   },
   {
    "w": "des",
-   "start": 51.84,
-   "end": 52.046,
+   "start": 51.863,
+   "end": 52.07,
    "line": 15,
    "kw": false
   },
   {
    "w": "nouveaux",
-   "start": 52.046,
-   "end": 52.498,
+   "start": 52.07,
+   "end": 52.524,
    "line": 15,
    "kw": false
   },
   {
    "w": "voisins.",
-   "start": 52.498,
-   "end": 52.901,
+   "start": 52.524,
+   "end": 52.928,
    "line": 15,
    "kw": true
   },
   {
    "w": "Alors",
    "start": 53.55,
-   "end": 53.909,
+   "end": 53.91,
    "line": 16,
    "kw": false
   },
   {
    "w": "la",
-   "start": 53.909,
-   "end": 54.095,
+   "start": 53.91,
+   "end": 54.096,
    "line": 16,
    "kw": false
   },
   {
    "w": "vraie",
-   "start": 54.095,
-   "end": 54.454,
+   "start": 54.096,
+   "end": 54.456,
    "line": 16,
    "kw": false
   },
   {
    "w": "question…",
-   "start": 54.454,
-   "end": 54.988,
+   "start": 54.456,
+   "end": 54.99,
    "line": 16,
    "kw": false
   },
   {
    "w": "est-ce",
-   "start": 55.438,
-   "end": 55.749,
+   "start": 55.44,
+   "end": 55.756,
    "line": 16,
    "kw": false
   },
   {
    "w": "qu'on",
-   "start": 55.749,
-   "end": 56.011,
+   "start": 55.756,
+   "end": 56.021,
    "line": 16,
    "kw": false
   },
   {
    "w": "serait",
-   "start": 56.011,
-   "end": 56.373,
+   "start": 56.021,
+   "end": 56.389,
    "line": 16,
    "kw": false
   },
   {
    "w": "plus",
-   "start": 56.373,
-   "end": 56.634,
+   "start": 56.389,
+   "end": 56.654,
    "line": 16,
    "kw": false
   },
   {
    "w": "heureux…",
-   "start": 56.634,
-   "end": 57.046,
+   "start": 56.654,
+   "end": 57.073,
    "line": 16,
    "kw": true
   },
   {
    "w": "sans",
-   "start": 57.446,
-   "end": 57.696,
+   "start": 57.473,
+   "end": 57.721,
    "line": 16,
    "kw": false
   },
   {
    "w": "être",
-   "start": 57.696,
-   "end": 57.946,
+   "start": 57.721,
+   "end": 57.97,
    "line": 16,
    "kw": false
   },
   {
    "w": "humains",
-   "start": 57.946,
-   "end": 58.34,
+   "start": 57.97,
+   "end": 58.362,
    "line": 16,
    "kw": false
   },
   {
    "w": "?",
-   "start": 58.34,
-   "end": 58.397,
+   "start": 58.362,
+   "end": 58.419,
    "line": 16,
    "kw": false
   },
   {
-   "w": "Dis-moi",
-   "start": 60.35,
-   "end": 60.717,
-   "line": 17,
-   "kw": false
-  },
-  {
-   "w": "en",
-   "start": 60.717,
-   "end": 60.88,
-   "line": 17,
-   "kw": false
-  },
-  {
-   "w": "commentaire…",
-   "start": 60.88,
-   "end": 61.501,
-   "line": 17,
-   "kw": false
-  },
-  {
-   "w": "quel",
-   "start": 61.851,
-   "end": 62.183,
-   "line": 17,
-   "kw": false
-  },
-  {
-   "w": "animal",
-   "start": 62.183,
-   "end": 62.642,
+   "w": "Abonne-toi…",
+   "start": 60.15,
+   "end": 60.742,
    "line": 17,
    "kw": true
   },
   {
+   "w": "et",
+   "start": 61.15,
+   "end": 61.314,
+   "line": 18,
+   "kw": false
+  },
+  {
+   "w": "dis-moi",
+   "start": 61.314,
+   "end": 61.683,
+   "line": 18,
+   "kw": false
+  },
+  {
+   "w": "en",
+   "start": 61.683,
+   "end": 61.847,
+   "line": 18,
+   "kw": false
+  },
+  {
+   "w": "commentaire…",
+   "start": 61.847,
+   "end": 62.472,
+   "line": 18,
+   "kw": false
+  },
+  {
+   "w": "quel",
+   "start": 62.772,
+   "end": 63.103,
+   "line": 18,
+   "kw": false
+  },
+  {
+   "w": "animal",
+   "start": 63.103,
+   "end": 63.561,
+   "line": 18,
+   "kw": true
+  },
+  {
    "w": "tu",
-   "start": 62.642,
-   "end": 62.846,
-   "line": 17,
+   "start": 63.561,
+   "end": 63.765,
+   "line": 18,
    "kw": false
   },
   {
    "w": "serais.",
-   "start": 62.846,
-   "end": 63.306,
-   "line": 17,
+   "start": 63.765,
+   "end": 64.223,
+   "line": 18,
    "kw": false
   }
  ],
  "events": {
   "tear": 2.0,
-  "griffes": 4.631,
-  "eye_open": 4.581,
-  "lion": 11.156,
-  "paresseux": 13.261,
-  "toi": 14.772,
-  "cris": 23.202,
+  "griffes": 4.633,
+  "eye_open": 4.583,
+  "lion": 11.162,
+  "paresseux": 13.267,
+  "toi": 14.773,
+  "cris": 23.212,
   "eteignent": 25.776,
-  "centrales": 28.514,
-  "diner": 37.541,
-  "tigre": 35.724,
-  "final_boom": 63.6,
+  "centrales": 28.515,
+  "diner": 37.412,
+  "tigre": 35.661,
+  "final_boom": 64.3,
   "heartbeats_p1": [
    0.25,
    1.05,
@@ -1041,92 +1055,97 @@
  "lines": [
   {
    "start": 0.6,
-   "end": 5.102979166666667,
+   "end": 5.108958333333333,
    "kw": "griffes"
   },
   {
    "start": 5.35,
-   "end": 9.765270833333332,
+   "end": 9.792229166666665,
    "kw": "animal"
   },
   {
    "start": 10.15,
-   "end": 11.472312500000001,
+   "end": 11.474875,
    "kw": "lion"
   },
   {
    "start": 12.3,
-   "end": 13.798187500000001,
+   "end": 13.797500000000001,
    "kw": "paresseux"
   },
   {
    "start": 14.55,
-   "end": 16.382145833333333,
+   "end": 16.403270833333334,
    "kw": "toi"
   },
   {
    "start": 17.2,
-   "end": 20.20595833333333,
+   "end": 20.211166666666667,
    "kw": "parle"
   },
   {
    "start": 20.6,
-   "end": 23.520895833333334,
+   "end": 23.52966666666667,
    "kw": "cris"
   },
   {
    "start": 24.25,
-   "end": 26.409291666666668,
+   "end": 26.409708333333334,
    "kw": "éteignent"
   },
   {
    "start": 26.6,
-   "end": 27.7555625,
+   "end": 27.739333333333335,
    "kw": "métros"
   },
   {
    "start": 28.15,
-   "end": 30.957296330809815,
+   "end": 30.950124569291678,
    "kw": "centrales"
   },
   {
    "start": 31.15,
-   "end": 33.805415503349025,
+   "end": 33.72101860906007,
    "kw": "alimentaire"
   },
   {
-   "start": 34.0,
-   "end": 37.9016875,
+   "start": 33.9,
+   "end": 37.7801875,
    "kw": "dîner"
   },
   {
    "start": 38.6,
-   "end": 41.45629166666667,
+   "end": 41.4584375,
    "kw": "respire"
   },
   {
    "start": 42.2,
-   "end": 44.6195,
+   "end": 44.62822916666667,
    "kw": "forêt"
   },
   {
    "start": 46.4,
-   "end": 49.73222916666666,
+   "end": 49.7599375,
    "kw": "reconnaissent"
   },
   {
    "start": 50.0,
-   "end": 52.90108333333333,
+   "end": 52.92808333333333,
    "kw": "voisins"
   },
   {
    "start": 53.55,
-   "end": 58.397437499999995,
+   "end": 58.41918749999999,
    "kw": "heureux"
   },
   {
-   "start": 60.35,
-   "end": 63.30583333333333,
+   "start": 60.15,
+   "end": 60.94155242197659,
+   "kw": "abonne-toi"
+  },
+  {
+   "start": 61.15,
+   "end": 64.22341666666667,
    "kw": "animal"
   }
  ]

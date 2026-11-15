@@ -407,7 +407,7 @@ def wt(words, key, which=0, edge="start"):
 def build():
     v, words = voice.build()
     v = v[:N]
-    v = reverb(v, 0.6, 0.12)[:N] * 1.0
+    v = reverb(v, 0.4, 0.04)[:N] * 1.0
     v = norm(v, 0.9)
 
     sfx = np.zeros(N, np.float32)      # effets atténués sous la voix
@@ -495,8 +495,8 @@ def build():
     place(sfx, wind(7.0, 0.3), 54.0)
     # PLAN 10
     place(sfx, growl(1.6, 52, 0.4, 500), 59.7)
-    place(hero, boom(1.0, 3.5), 63.6)
-    ev["final_boom"] = 63.6
+    ev["final_boom"] = min(64.3, LINES[-1]["end"] + 0.08)
+    place(hero, boom(1.0, 3.5), ev["final_boom"])
     ev["heartbeats_p1"] = [0.25, 1.05, 1.8, 2.5, 3.15, 3.75]
 
     music = tension_music() + emotional_music()
@@ -521,7 +521,7 @@ def build():
     e = np.repeat(env_b, blk)
     e = np.concatenate([e, np.zeros(N - len(e), np.float32)])
     duck = np.clip(e * 1.6, 0, 1)
-    mix_mono = v * 1.0 + music * (1 - 0.7 * duck) * 0.42 + sfx * (1 - 0.65 * duck) * 0.4 + hero * (1 - 0.45 * duck) * 0.8
+    mix_mono = v * 1.0 + music * (1 - 0.8 * duck) * 0.42 + sfx * (1 - 0.72 * duck) * 0.4 + hero * (1 - 0.45 * duck) * 0.8
 
     bg = mix_mono - v
     blk = SR // 2

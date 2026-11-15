@@ -1236,8 +1236,9 @@ def scene_eye_cta(t, lt, dur, ev, fi):
         if tb <= t < tb + 0.24:
             u = (t - tb) / 0.24
             op = abs(1 - 2 * u)
-    if t > 64.55:
-        op = max(0.0, 1 - (t - 64.55) / 0.3)
+    close_t = ev["final_boom"] + 0.25
+    if t > close_t:
+        op = max(0.0, 1 - (t - close_t) / 0.25)
     a = eye(op, 38, None)
     zoom = 1.2 + 0.08 * lt / dur
     sh = (0, 0)
@@ -1258,8 +1259,8 @@ def scene_eye_cta(t, lt, dur, ev, fi):
         over(a, cta if s <= 1.001 else _scaled_layer(cta, s), k)
     if 0 <= t - fb < 0.1:
         a = a + 0.4 * (1 - (t - fb) / 0.1)
-    if t > 64.55:
-        a = a * max(0, 1 - (t - 64.55) / 0.4)
+    if t > close_t:
+        a = a * max(0, 1 - (t - close_t) / 0.35)
     return a
 
 

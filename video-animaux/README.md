@@ -19,5 +19,5 @@ python3 src/make_video.py mux        # réassemblage seul (après ajout de rushe
 ## Remplacer par de vrais rushes ou une vraie voix
 
 - `clips/plan01.mp4` … `clips/plan10.mp4` : un rush par plan, recadré automatiquement en 9:16.
-- `voice/line01.wav` … `voice/line18.wav` : une réplique par fichier, recalée automatiquement.
+- `voice/line01.wav` … `voice/line19.wav` : une réplique par fichier, recalée automatiquement.
   Les sous-titres sont alors recalculés (relancer tout le pipeline).

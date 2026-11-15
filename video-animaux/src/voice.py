@@ -12,8 +12,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 VOICE_DIR = os.path.join(ROOT, "voice")
 
-PITCH = 0.86      # < 1 = voix plus grave
-SPEED = 128       # mots/min espeak (lent, documentaire)
+PITCH = 0.9      # < 1 = voix plus grave
+SPEED = 132       # mots/min espeak (lent, documentaire)
 
 
 def read_wav(path):
@@ -29,7 +29,9 @@ def read_wav(path):
 def to48k(src, dst, pitch=1.0):
     af = f"asetrate={16000 * pitch:.0f},aresample={SR},atempo={1 / pitch:.4f}" if pitch != 1.0 else f"aresample={SR}"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-af",
-                    af + ",highpass=f=70,equalizer=f=140:t=q:w=1.2:g=5,equalizer=f=3200:t=q:w=1.5:g=2",
+                    af + ",highpass=f=80,equalizer=f=130:t=q:w=1.0:g=3,equalizer=f=320:t=q:w=1.2:g=-4,"
+                    "equalizer=f=2800:t=q:w=1.2:g=6,equalizer=f=6500:t=q:w=1.5:g=3,"
+                    "acompressor=threshold=-20dB:ratio=3:attack=5:release=90:makeup=2",
                     "-ac", "1", "-ar", str(SR), dst], check=True)
 
 
@@ -44,7 +46,7 @@ def synth_segment(text):
     clean = text.replace("…", "").strip()
     with tempfile.TemporaryDirectory() as d:
         raw, out = os.path.join(d, "r.wav"), os.path.join(d, "o.wav")
-        subprocess.run(["espeak-ng", "-v", "mb-fr1", "-s", str(SPEED), "-p", "28", "-g", "2",
+        subprocess.run(["espeak-ng", "-v", "mb-fr1", "-s", str(SPEED), "-p", "30", "-g", "3",
                         clean, "-w", raw], check=True, capture_output=True)
         to48k(raw, out, PITCH)
         return trim(read_wav(out))
@@ -66,7 +68,7 @@ def build():
             audio = synth_segment(text) if not os.path.exists(override) else None
             pieces.append((text, audio, pause))
         # Limite : la réplique doit tenir avant la suivante
-        nxt = LINES[li + 1]["start"] if li + 1 < len(LINES) else DURATION - 0.6
+        nxt = LINES[li + 1]["start"] if li + 1 < len(LINES) else DURATION - 0.55
         budget = nxt - line["start"] - 0.2
         if os.path.exists(override):
             a = trim(read_wav_any(override))
