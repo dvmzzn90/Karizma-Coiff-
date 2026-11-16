@@ -30,16 +30,16 @@ SCENES = [
         dict(say="Tu veux faire de l'argent facilement ?|Regarde cette vidéo.",
              sub="Tu veux faire de l'*argent* *facilement* ?|Regarde cette *vidéo.*")]),
     dict(id="plant", lead=0.45, tail=0.9, lines=[
-        dict(say="J'ai essayé de faire pousser de l'argent...",
+        dict(say="J'ai essayé de faire pousser de l'argent.",
              sub="J'ai essayé de faire *pousser* de l'*argent…*")]),
     dict(id="shake", lead=0.7, tail=0.6, lines=[
-        dict(say="J'ai même vérifié mes poches internes...",
+        dict(say="J'ai même vérifié mes poches internes.",
              sub="J'ai même vérifié mes *poches* *internes…*")]),
     dict(id="scam", lead=1.75, tail=0.6, lines=[
         dict(say="Et ça...|plus jamais.",
              sub="Et ça…|*plus* *jamais.*")]),
     dict(id="reveal", lead=2.25, tail=0.8, lines=[
-        dict(say="Attends...|et si l'argent était déjà...|chez moi ?",
+        dict(say="Attends !|Et si l'argent était déjà|chez moi ?",
              sub="Attends…|et si l'*argent* était déjà…|*chez* *moi* ?")]),
     dict(id="step1", lead=0.55, tail=0.45, lines=[
         dict(say="Un :|tu fais le tour de chez toi.|Tout ce que tu n'as pas utilisé depuis un an, tu le mets de côté.",
@@ -60,7 +60,8 @@ SCENES = [
         dict(say="Abonne-toi,|je te montre la suite pour aller encore plus loin !",
              sub="*Abonne-toi,*|je te montre la *suite* pour aller *encore* *plus* *loin* !")]),
 ]
-PAUSE = 0.2  # silence pour chaque "|"
+PAUSE = 0.25  # silence ajouté seulement après un « ... » (pause comique)
+MAX_GAP = 0.28  # respiration interne maximale
 
 
 # ---------------------------------------------------------------- helpers
@@ -152,8 +153,8 @@ def tts(text, path):
         ensure_piper()
         # Réglages pour la clarté : débit naturel, variations modérées (pas monotone).
         subprocess.run(["python3", "-m", "piper", "-m", PIPER_MODEL, "-f", raw,
-                        "--length-scale", "1.0", "--noise-scale", "0.5", "--noise-w", "0.6",
-                        "--sentence-silence", "0.15"],
+                        "--length-scale", "0.97", "--noise-scale", "0.667", "--noise-w", "0.8",
+                        "--sentence-silence", "0.1"],
                        input=text.encode(), check=True, capture_output=True)
         # Traitement « voix off » propre : coupe-bas, présence pour les consonnes,
         # compression douce pour un niveau régulier. Aucun effet de déformation.
@@ -183,12 +184,31 @@ def piper_segments(segs, path):
     if full[-1] not in ".!?…":
         full += "."
     x = tts(full, path)
+    hop = SR // 100
+
+    def silent_runs(x):
+        rms = np.array([np.sqrt(np.mean(x[i:i + hop] ** 2)) for i in range(0, len(x) - hop, hop)])
+        return rms < 0.05 * rms.max()
+
+    # fluidité : aucune respiration interne ne dépasse MAX_GAP
+    sil, keep, i = silent_runs(x), np.ones(len(x), bool), 0
+    while i < len(sil):
+        if sil[i]:
+            j = i
+            while j < len(sil) and sil[j]:
+                j += 1
+            excess = (j - i) - int(MAX_GAP * 100)
+            if i > 0 and j < len(sil) and excess > 0:
+                a = (i + (j - i - excess) // 2) * hop
+                keep[a:a + excess * hop] = False
+            i = j
+        else:
+            i += 1
+    x = x[keep]
     k = len(parts) - 1
     if k == 0:
         return [x]
-    hop = SR // 100
-    rms = np.array([np.sqrt(np.mean(x[i:i + hop] ** 2)) for i in range(0, len(x) - hop, hop)])
-    sil = rms < 0.05 * rms.max()
+    sil = silent_runs(x)
     runs, i = [], 0
     while i < len(sil):
         if sil[i]:
@@ -207,7 +227,8 @@ def piper_segments(segs, path):
     else:
         bounds = [int((a + b) / 2 * hop) for _, a, b in cuts]
     edges = [0] + bounds + [len(x)]
-    return [trim(x[a:b]) for a, b in zip(edges[:-1], edges[1:])]
+    # pas de rognage aux coupes internes : on garde la respiration naturelle
+    return [x[a:b] for a, b in zip(edges[:-1], edges[1:])]
 
 
 def chunk_words(text, max_chars=17):
@@ -248,7 +269,7 @@ def build():
             spoken = [sy for sy in say if sy.strip(". ") != ""]
             pieces = piper_segments(spoken, os.path.join(tmp, f"{s['id']}_{li}.wav")) if VOICE != "mbrola" else None
             for k, (sy, sb) in enumerate(zip(say, sub)):
-                if k:
+                if k and (VOICE == "mbrola" or say[k - 1].rstrip().endswith("...")):
                     t += PAUSE
                 if sy.strip(". ") == "":
                     # pause comique pure (« … »)
