@@ -122,20 +122,21 @@ def add(buf, sig, t, gain=1.0):
 
 
 # ---------------------------------------------------------------- voice
-# VOICE=gilles (défaut) : voix neuronale Piper, masculine, naturelle.
-# VOICE=mbrola          : ancienne voix espeak-ng + MBROLA fr1.
-VOICE = os.environ.get("VOICE", "gilles")
-PIPER_URL = "https://github.com/rhasspy/piper/releases/download/v0.0.2/voice-fr-gilles-low.tar.gz"
-PIPER_DIR = os.path.join(HERE, "voices", "fr-gilles-low")
-PIPER_MODEL = os.path.join(PIPER_DIR, "fr-gilles-low.onnx")
+# VOICE=tom (défaut) : voix neuronale Piper « Tom » (fr_FR, medium, 44,1 kHz),
+#                      masculine, claire, sans effet — priorité à la compréhension.
+# VOICE=mbrola       : ancienne voix espeak-ng + MBROLA fr1 (effet robot).
+VOICE = os.environ.get("VOICE", "tom")
+PIPER_URL = "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-fr_FR-tom-medium.tar.bz2"
+PIPER_DIR = os.path.join(HERE, "voices")
+PIPER_MODEL = os.path.join(PIPER_DIR, "vits-piper-fr_FR-tom-medium", "fr_FR-tom-medium.onnx")
 
 
 def ensure_piper():
     if not os.path.exists(PIPER_MODEL):
         os.makedirs(PIPER_DIR, exist_ok=True)
-        tgz = os.path.join(PIPER_DIR, "voice.tar.gz")
+        tgz = os.path.join(PIPER_DIR, "voice.tar.bz2")
         subprocess.run(["curl", "-sSL", "-o", tgz, PIPER_URL], check=True)
-        subprocess.run(["tar", "xzf", tgz, "-C", PIPER_DIR], check=True)
+        subprocess.run(["tar", "xjf", tgz, "-C", PIPER_DIR], check=True)
         os.remove(tgz)
 
 
@@ -144,31 +145,27 @@ def tts(text, path):
     if VOICE == "mbrola":
         subprocess.run(["espeak-ng", "-v", "mb-fr1", "-s", "156", "-p", "58", "-a", "110",
                         "-w", raw, text], check=True)
+        af = ("asetrate=16000*1.07,aresample=44100,atempo=0.9346,"
+              "highpass=f=110,lowpass=f=7600,aecho=0.85:0.55:5:0.22,"
+              "equalizer=f=2800:t=q:w=1.2:g=3")
     else:
         ensure_piper()
-        # length_scale < 1 = débit un peu plus vif ; noise_w bas = diction plus nette
+        # Réglages pour la clarté : débit naturel, variations modérées (pas monotone).
         subprocess.run(["python3", "-m", "piper", "-m", PIPER_MODEL, "-f", raw,
-                        "--length-scale", "0.97", "--noise-scale", "0.33", "--noise-w", "0.1",
-                        "--sentence-silence", "0.1"],
+                        "--length-scale", "1.0", "--noise-scale", "0.5", "--noise-w", "0.6",
+                        "--sentence-silence", "0.15"],
                        input=text.encode(), check=True, capture_output=True)
-    # Voix aiguë de petit robot : +22 % par rééchantillonnage (timbre plus « petit »)
-    # puis +30 % de hauteur avec formants préservés (diction nette), soit ≈ +8 demi-tons.
-    # Peigne court + présence pour le côté métallique sans perdre l'articulation.
-    af = ("asetrate=16000*1.22,aresample=44100,"
-          "rubberband=tempo=0.8197:pitch=1.30:formant=preserved:transients=crisp:pitchq=quality:smoothing=on,"
-          "highpass=f=150,lowpass=f=9500,"
-          "aecho=0.8:0.6:3.5:0.32,"
-          "equalizer=f=3200:t=q:w=1.0:g=4,equalizer=f=350:t=q:w=1.0:g=-3")
+        # Traitement « voix off » propre : coupe-bas, présence pour les consonnes,
+        # compression douce pour un niveau régulier. Aucun effet de déformation.
+        af = ("aresample=44100,highpass=f=75,"
+              "equalizer=f=250:t=q:w=1.0:g=-2,equalizer=f=3500:t=q:w=1.2:g=3,"
+              "acompressor=threshold=-20dB:ratio=3:attack=5:release=90:makeup=2")
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", raw, "-af", af,
                     "-ac", "1", "-ar", str(SR), path], check=True)
     x = read_wav(path)
-    # trim silence
     idx = np.where(np.abs(x) > 0.01)[0]
     if len(idx):
         x = x[max(0, idx[0] - 200): idx[-1] + 1500]
-    # modulation en anneau légère : grain « robot » sans voix monotone
-    t = np.arange(len(x)) / SR
-    x = x * (0.84 + 0.16 * np.sin(2 * np.pi * 150 * t))
     return x / (np.max(np.abs(x)) + 1e-9) * 0.92
 
 
@@ -345,8 +342,9 @@ def build():
     ve = np.abs(voice)
     ve = lp(ve, 6, 1)
     ve = np.clip(ve / (ve.max() + 1e-9) * 3, 0, 1)
-    duck = 1 - 0.62 * ve
-    mix = music * 0.42 * duck[:, None] + voice[:, None] * 0.95 + sfx * 0.6
+    duck = 1 - 0.78 * ve
+    # musique nettement plus basse sous la voix pour une écoute sans effort
+    mix = music * 0.36 * duck[:, None] + voice[:, None] * 0.95 + sfx * 0.5
     # final limiter-ish
     peak = np.max(np.abs(mix))
     mix = np.tanh(mix / max(peak, 1) * 1.1) * 0.92

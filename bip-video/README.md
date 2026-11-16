@@ -1,12 +1,12 @@
 # Bip — « L'argent est déjà chez toi » (vidéo 9:16)
 
-**Vidéo finale :** `bip_argent_placard.mp4` (1080×1920, 30 fps, ~59 s, H.264 + AAC).
+**Vidéo finale :** `bip_argent_placard.mp4` (1080×1920, 30 fps, ~60 s, H.264 + AAC).
 
 Tout est généré par code :
 
 | Fichier | Rôle |
 |---|---|
-| `build_audio.py` | Voix FR neuronale Piper « Gilles » (modèle téléchargé automatiquement dans `voices/`), voix aiguë de petit robot (≈ +8 demi-tons, formants préservés), timbre métallique — `VOICE=mbrola` pour revenir à l'ancienne voix, musique funky électro synthétisée, bruitages (bip, ding, cha-ching, boing, déclencheur photo…), ducking musique sous la voix, timeline partagée → `build/audio.wav`, `build/timeline.js` |
+| `build_audio.py` | Voix FR neuronale Piper « Tom » (fr_FR medium, 44,1 kHz, téléchargée automatiquement dans `voices/`), sans effet, traitée pour la clarté — `VOICE=mbrola` pour l'ancienne voix robot |
 | `bip.html` | Animation (personnage Bip, 11 scènes, caméra, sous-titres blancs bordés de noir + mots-clés en jaune). Ouvrir dans un navigateur pour un aperçu avec le son. |
 | `render.js` | Rendu image par image via Playwright + ffmpeg → MP4 |
 
