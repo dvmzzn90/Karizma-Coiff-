@@ -18,6 +18,14 @@ const fs = require("fs");
   const dur = await page.evaluate(() => window.DURATION);
   const svg = await page.$("#stage");
 
+  if (args[0] === "--cover") {
+    await page.evaluate(() => window.renderCover());
+    await svg.screenshot({ path: path.join(here, "couverture.png") });
+    await svg.screenshot({ path: path.join(here, "couverture.jpg"), type: "jpeg", quality: 92 });
+    console.log("OK -> couverture.png / couverture.jpg");
+    await browser.close();
+    return;
+  }
   if (args[0] === "--stills") {
     const times = args[1].split(",").map(Number);
     fs.mkdirSync(path.join(out, "stills"), { recursive: true });
