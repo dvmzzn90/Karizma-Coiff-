@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bip — L'argent est déjà chez toi</title>
+<style>
+  @font-face { font-family: "Baloo 2"; font-weight: 800; src: url(assets/baloo2-800.woff2) format("woff2"); }
+  html, body { margin: 0; height: 100%; background: #111; overflow: hidden; }
+  #wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  svg#stage { height: 100%; max-width: 100%; aspect-ratio: 9/16; display: block; background: #222; }
+  body.render svg#stage { width: 1080px; height: 1920px; }
+  #ui { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; gap: 10px; align-items: center;
+        font: 600 14px system-ui, sans-serif; color: #fff; background: rgba(0,0,0,.55); padding: 8px 12px; border-radius: 999px; }
+  #ui button { font: inherit; border: 0; border-radius: 999px; padding: 6px 14px; background: #ff8a2a; color: #fff; cursor: pointer; }
+  #ui input { width: 220px; }
+  body.render #ui { display: none; }
+  text { font-family: "Baloo 2", "Inter", sans-serif; font-weight: 800; }
+</style>
+</head>
+<body>
+<div id="wrap">
+<svg id="stage" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="gSilver" cx="0.36" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="0.35" stop-color="#e3e8ee"/>
+      <stop offset="0.75" stop-color="#a7b1bd"/><stop offset="1" stop-color="#6b7581"/>
+    </radialGradient>
+    <linearGradient id="gOrange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffab4a"/><stop offset="0.6" stop-color="#f27a1a"/><stop offset="1" stop-color="#b8510c"/>
+    </linearGradient>
+    <radialGradient id="gOrangeBall" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#ffd08a"/><stop offset="0.5" stop-color="#f7861f"/><stop offset="1" stop-color="#b24d0a"/>
+    </radialGradient>
+    <linearGradient id="gScreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d2a4d"/><stop offset="1" stop-color="#070b1a"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff0a0"/><stop offset="0.35" stop-color="#ffd23f"/><stop offset="0.8" stop-color="#d99a00"/><stop offset="1" stop-color="#a87100"/>
+    </linearGradient>
+    <radialGradient id="gCoin" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#fff6c2"/><stop offset="0.45" stop-color="#ffcc33"/><stop offset="1" stop-color="#c98a00"/>
+    </radialGradient>
+    <radialGradient id="gStudio" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#ffe0a3"/><stop offset="0.4" stop-color="#ffa45c"/><stop offset="0.8" stop-color="#e2566a"/><stop offset="1" stop-color="#7a2f6e"/>
+    </radialGradient>
+    <linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd8a6"/><stop offset="1" stop-color="#f2a873"/>
+    </linearGradient>
+    <linearGradient id="gWallEve" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9a77a"/><stop offset="1" stop-color="#c9775a"/>
+    </linearGradient>
+    <linearGradient id="gFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9814a"/><stop offset="1" stop-color="#7a4020"/>
+    </linearGradient>
+    <linearGradient id="gNight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2d2858"/><stop offset="1" stop-color="#110d24"/>
+    </linearGradient>
+    <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b8743f"/><stop offset="1" stop-color="#7b4520"/>
+    </linearGradient>
+    <linearGradient id="gTerra" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a4482a"/><stop offset="0.35" stop-color="#e07a4f"/><stop offset="1" stop-color="#8e3a20"/>
+    </linearGradient>
+    <linearGradient id="gBox" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e3b27a"/><stop offset="1" stop-color="#b47a43"/>
+    </linearGradient>
+    <linearGradient id="gJean" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d9be0"/><stop offset="1" stop-color="#2c4f94"/>
+    </linearGradient>
+    <linearGradient id="gSun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6c8" stop-opacity="0.85"/><stop offset="1" stop-color="#ffe08a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gMonitor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff3d9a"/><stop offset="0.5" stop-color="#ffb800"/><stop offset="1" stop-color="#21e0a0"/>
+    </linearGradient>
+    <linearGradient id="gPhone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef2f7"/>
+    </linearGradient>
+    <linearGradient id="gNumber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe45c"/><stop offset="1" stop-color="#ff7a1a"/>
+    </linearGradient>
+    <radialGradient id="gVignette" cx="0.5" cy="0.48" r="0.75">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#1a0a00" stop-opacity="0.55"/>
+    </radialGradient>
+    <radialGradient id="gWarm" cx="0.25" cy="0.12" r="0.9">
+      <stop offset="0" stop-color="#ffd48a" stop-opacity="0.35"/><stop offset="0.6" stop-color="#ffd48a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gPool" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff1c4" stop-opacity="0.55"/><stop offset="1" stop-color="#fff1c4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gShadow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3a1600" stop-opacity="0.45"/><stop offset="1" stop-color="#3a1600" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gBulbGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff7b0" stop-opacity="1"/><stop offset="0.4" stop-color="#ffd84a" stop-opacity="0.6"/><stop offset="1" stop-color="#ffb300" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#3a1400" flood-opacity="0.28"/>
+    </filter>
+    <filter id="blur12" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="blur30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+    <clipPath id="clipBody"><circle r="200"/></clipPath>
+    <clipPath id="clipScreen"><rect x="-140" y="-150" width="280" height="178" rx="78"/></clipPath>
+  </defs>
+  <g id="frame"></g>
+</svg>
+</div>
+<div id="ui"><button id="play">▶ Lecture</button><input id="scrub" type="range" min="0" max="1" step="0.001" value="0"><span id="tc">0.0s</span></div>
+<script src="build/timeline.js"></script>
+<script>
+"use strict";
+const TL = window.TIMELINE, E = TL.events, FPS = TL.fps;
+const SC = Object.fromEntries(TL.scenes.map(s => [s.id, s]));
+const LN = {}; TL.lines.forEach(l => { if (!LN[l.scene]) LN[l.scene] = l; });
+
+// ------------------------------------------------------------ math
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, t) => a + (b - a) * t;
+const P = (t, a, d) => clamp((t - a) / d);
+const ez = {
+  out: t => 1 - Math.pow(1 - t, 3),
+  in: t => t * t * t,
+  io: t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+  back: t => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); },
+  el: t => t === 0 ? 0 : t === 1 ? 1 : Math.pow(2, -9 * t) * Math.sin((t * 9 - .75) * (2 * Math.PI / 3)) + 1,
+};
+const L2 = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const f1 = n => +n.toFixed(1);
+const g = (tr, inner, extra = "") => `<g transform="${tr}" ${extra}>${inner}</g>`;
+const tf = (x, y, r = 0, s = 1, sy) => `translate(${f1(x)},${f1(y)}) rotate(${f1(r)}) scale(${+s.toFixed(3)},${+(sy ?? s).toFixed(3)})`;
+function chunkT(sub, after = 0) { const c = TL.chunks.find(c => c.start >= after - 0.01 && c.text.includes(sub)); return c ? c.start : after; }
+function mouthAt(t) { return TL.mouth[Math.min(TL.mouth.length - 1, Math.max(0, Math.floor(t * FPS)))] || 0; }
+function blinkAt(t) { const p = (t + 0.7) % 3.3; return p < 0.13 ? Math.sin(p / 0.13 * Math.PI) : 0; }
+function speaking(t) { return TL.lines.some(l => t >= l.start && t <= l.end); }
+
+// ------------------------------------------------------------ Bip
+const POSE = {
+  rest: [[-212, 190], [212, 190]],
+  hip: [[-150, 120], [150, 120]],
+  up: [[-250, -150], [250, -150]],
+  wave: [[-212, 190], [250, -180]],
+  cross: [[95, 95], [-95, 115]],
+  lap: [[-70, 150], [70, 150]],
+  tie: [[-34, 70], [34, 70]],
+  camera: [[60, -40], [160, -60]],
+  flail: [[-260, 60], [260, 60]],
+};
+function ik(sx, sy, tx, ty, l1, l2, bend) {
+  const dx = tx - sx, dy = ty - sy;
+  const d = clamp(Math.hypot(dx, dy), 20, l1 + l2 - 1);
+  const a = Math.atan2(dy, dx);
+  const off = Math.acos(clamp((l1 * l1 + d * d - l2 * l2) / (2 * l1 * d), -1, 1));
+  const ea = a + bend * off;
+  return { ex: sx + l1 * Math.cos(ea), ey: sy + l1 * Math.sin(ea), hx: sx + d * Math.cos(a), hy: sy + d * Math.sin(a) };
+}
+function arm(side, target, o) {
+  const sx = side * 168, sy = 40;
+  const k = ik(sx, sy, target[0], target[1], 108, 100, side > 0 ? -1 : 1);
+  const hs = (side > 0 ? o.rHand : o.lHand) || 1;
+  let s = `<path d="M${f1(sx)} ${sy} L${f1(k.ex)} ${f1(k.ey)} L${f1(k.hx)} ${f1(k.hy)}" fill="none" stroke="#6f7a87" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>`
+        + `<path d="M${f1(sx)} ${sy} L${f1(k.ex)} ${f1(k.ey)} L${f1(k.hx)} ${f1(k.hy)}" fill="none" stroke="#d3d9e0" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3,-4)"/>`
+        + `<circle cx="${f1(k.ex)}" cy="${f1(k.ey)}" r="15" fill="url(#gOrangeBall)"/>`;
+  const fing = (side > 0 ? o.rFinger : o.lFinger);
+  s += g(tf(k.hx, k.hy, 0, hs), (fing ? `<rect x="-10" y="-58" width="20" height="40" rx="10" fill="url(#gOrangeBall)"/>` : "")
+        + `<circle r="31" fill="url(#gOrangeBall)"/><ellipse cx="-9" cy="-11" rx="10" ry="7" fill="#fff" opacity=".45"/>`);
+  const item = side > 0 ? o.rItem : o.lItem;
+  if (item) s += item(k.hx, k.hy);
+  return s;
+}
+function eyes(o) {
+  const e = o.eyes || "normal", gl = o.glow ?? 1, lx = (o.look?.[0] || 0) * 16, ly = (o.look?.[1] || 0) * 12;
+  const col = gl > 0.05 ? "#63e6ff" : "#1b2b4a";
+  const bl = o.blink || 0;
+  const one = (cx, side) => {
+    const x = cx + lx, y = -64 + ly;
+    let kind = e;
+    if (e === "wink" && side > 0) kind = "happy";
+    if (e === "squint" && side < 0) kind = "closed";
+    if (kind === "happy") return `<path d="M${x - 32} ${y + 14} Q${x} ${y - 38} ${x + 32} ${y + 14}" fill="none" stroke="${col}" stroke-width="17" stroke-linecap="round"/>`;
+    if (kind === "closed") return `<path d="M${x - 30} ${y} L${x + 30} ${y}" stroke="${col}" stroke-width="15" stroke-linecap="round"/>`;
+    if (kind === "money") return `<text x="${x}" y="${y + 28}" text-anchor="middle" font-size="96" fill="#ffe14d">€</text>`;
+    const big = kind === "wide" ? 1.2 : 1;
+    const ry = 46 * big * (1 - 0.92 * bl);
+    let s = `<ellipse cx="${x}" cy="${y}" rx="${34 * big}" ry="${f1(Math.max(4, ry))}" fill="${col}"/>`;
+    if (gl > 0.05 && bl < 0.5) s += `<ellipse cx="${x - 10}" cy="${y - 16}" rx="9" ry="12" fill="#fff" opacity="${0.9 * gl}"/><circle cx="${x + 12}" cy="${y + 14}" r="5" fill="#fff" opacity="${0.6 * gl}"/>`;
+    if (kind === "sad") s += `<path d="M${x - 50} ${y - 60} L${x + 50} ${y - 60} L${x + 50} ${y - 50 + (side < 0 ? -10 : 30)} L${x - 50} ${y - 50 + (side < 0 ? 30 : -10)} Z" fill="url(#gScreen)"/>`;
+    if (kind === "angry") s += `<path d="M${x - 50} ${y - 60} L${x + 50} ${y - 60} L${x + 50} ${y - 6 + (side < 0 ? 18 : -14)} L${x - 50} ${y - 6 + (side < 0 ? -14 : 18)} Z" fill="url(#gScreen)"/>`;
+    if (kind === "flat") s += `<rect x="${x - 50}" y="${y - 70}" width="100" height="62" fill="url(#gScreen)"/>`;
+    return s;
+  };
+  let mouth = "";
+  const m = o.mouth || 0, mx = lx * 0.6, my = 2 + ly * 0.5;
+  if (m > 0.08) mouth = `<rect x="${f1(mx - 26 - m * 8)}" y="${f1(my - 4 - m * 12)}" width="${f1(52 + m * 16)}" height="${f1(8 + m * 26)}" rx="${f1(4 + m * 13)}" fill="${col}"/>`;
+  else if ((o.smile ?? 1) > 0.5) mouth = `<path d="M${mx - 24} ${my - 4} Q${mx} ${my + 16} ${mx + 24} ${my - 4}" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round"/>`;
+  else if (o.smile < -0.5) mouth = `<path d="M${mx - 22} ${my + 8} Q${mx} ${my - 10} ${mx + 22} ${my + 8}" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round"/>`;
+  else mouth = `<rect x="${mx - 20}" y="${my - 3}" width="40" height="8" rx="4" fill="${col}"/>`;
+  return `<g clip-path="url(#clipScreen)"><g ${gl > 0.05 ? 'filter="url(#glow)"' : ""} opacity="${0.35 + 0.65 * gl}">${one(-58, -1)}${one(58, 1)}${mouth}</g></g>`;
+}
+function tieShape() {
+  return `<path d="M-15 76 L15 76 L52 286 L0 336 L-52 286 Z" fill="url(#gGold)" stroke="#a87100" stroke-width="3"/>`
+    + `<path d="M-6 120 L22 108 M-22 170 L36 146 M-34 222 L46 190 M-46 272 L50 238" stroke="#c98600" stroke-width="10" opacity=".55"/>`
+    + `<path d="M-27 34 L27 34 L19 80 L-19 80 Z" fill="url(#gGold)" stroke="#a87100" stroke-width="3"/>`
+    + `<path d="M-14 42 L-6 74" stroke="#fff6c0" stroke-width="5" opacity=".7"/>`;
+}
+function bip(o) {
+  const t = o.t || 0;
+  const pose = o.pose || "rest";
+  const tg = o.arms || POSE[pose];
+  const L = tg[0], R = tg[1];
+  const front = o.front || {};
+  const bob = o.noBob ? 0 : Math.sin(t * 5.2) * 5;
+  let s = "";
+  // legs
+  if (!o.sit) {
+    s += `<rect x="-104" y="150" width="38" height="78" rx="14" fill="#7d8794"/><rect x="66" y="150" width="38" height="78" rx="14" fill="#7d8794"/>`
+       + `<ellipse cx="-92" cy="236" rx="56" ry="27" fill="url(#gOrangeBall)"/><ellipse cx="92" cy="236" rx="56" ry="27" fill="url(#gOrangeBall)"/>`;
+  } else {
+    s += `<ellipse cx="-108" cy="178" rx="58" ry="40" fill="url(#gOrangeBall)"/><ellipse cx="108" cy="178" rx="58" ry="40" fill="url(#gOrangeBall)"/>`;
+  }
+  let body = "";
+  if (!front.l) body += arm(-1, L, o);
+  if (!front.r) body += arm(1, R, o);
+  // antenna
+  const ant = o.ant ?? 0.2, ar = o.antRot || 0;
+  let antS = `<path d="M0 -196 Q 6 -232 0 -262" stroke="#7d8794" stroke-width="11" fill="none" stroke-linecap="round"/>`;
+  if (ant > 0.35) antS += `<circle cx="0" cy="-282" r="${f1(40 + ant * 90)}" fill="url(#gBulbGlow)" opacity="${ant}"/>`;
+  if (ant > 0.7) for (let i = 0; i < 10; i++) { const a = i / 10 * Math.PI * 2 + t * 0.8; antS += `<path d="M${f1(Math.cos(a) * 44)} ${f1(-282 + Math.sin(a) * 44)} L${f1(Math.cos(a) * (66 + ant * 40))} ${f1(-282 + Math.sin(a) * (66 + ant * 40))}" stroke="#ffe066" stroke-width="9" stroke-linecap="round" opacity="${f1((ant - 0.7) * 3.3)}"/>`; }
+  antS += `<circle cx="0" cy="-282" r="22" fill="${ant > 0.5 ? "#fff59a" : "url(#gOrangeBall)"}" ${ant > 0.5 ? 'filter="url(#glow)"' : ""}/><ellipse cx="-7" cy="-290" rx="7" ry="5" fill="#fff" opacity=".7"/>`;
+  body += g(`rotate(${f1(ar)} 0 -196)`, antS);
+  // ears
+  body += `<circle cx="-198" cy="-48" r="32" fill="url(#gOrangeBall)"/><circle cx="198" cy="-48" r="32" fill="url(#gOrangeBall)"/><circle cx="-204" cy="-48" r="12" fill="#8a3f08" opacity=".5"/><circle cx="204" cy="-48" r="12" fill="#8a3f08" opacity=".5"/>`;
+  // body sphere
+  body += `<circle r="200" fill="url(#gSilver)"/>`
+    + `<g clip-path="url(#clipBody)"><rect x="-210" y="112" width="420" height="120" fill="url(#gOrange)"/><path d="M-210 112 L210 112" stroke="#5c6672" stroke-width="6" opacity=".5"/>`
+    + `<circle cx="-120" cy="150" r="7" fill="#8a3f08" opacity=".6"/><circle cx="120" cy="150" r="7" fill="#8a3f08" opacity=".6"/>`
+    + `<circle r="200" fill="none" stroke="#3d4650" stroke-width="40" opacity=".18"/></g>`
+    + `<ellipse cx="-92" cy="-138" rx="58" ry="34" fill="#fff" opacity=".75" transform="rotate(-30 -92 -138)" filter="url(#blur12)"/>`;
+  // screen
+  body += `<rect x="-148" y="-158" width="296" height="194" rx="86" fill="#5c6672"/><rect x="-140" y="-150" width="280" height="178" rx="78" fill="url(#gScreen)"/>`;
+  body += eyes(o);
+  body += `<path d="M-110 -128 Q-60 -150 10 -146" stroke="#fff" stroke-width="8" fill="none" opacity=".18" stroke-linecap="round"/>`;
+  // tie
+  if (o.tie !== false) body += g(`rotate(${f1(o.tieRot || 0)} 0 34)`, tieShape());
+  if (front.l) body += arm(-1, L, o);
+  if (front.r) body += arm(1, R, o);
+  s += body;
+  const sq = o.squash || 0;
+  return g(tf(o.x, o.y + bob * (o.s || 1), o.rot || 0, (o.s || 1) * (o.flip ? -1 : 1) * (1 + sq * 0.12), (o.s || 1) * (1 - sq * 0.12)), s);
+}
+function shadow(x, y, w, a = 1) { return `<ellipse cx="${f1(x)}" cy="${f1(y)}" rx="${f1(w)}" ry="${f1(w * 0.18)}" fill="url(#gShadow)" opacity="${a}"/>`; }
+
+// ------------------------------------------------------------ backgrounds
+function bgStudio(t) {
+  let s = `<rect width="1080" height="1920" fill="url(#gStudio)"/>`;
+  const r = rng(5);
+  for (let i = 0; i < 16; i++) {
+    const x = r() * 1080, y = r() * 1920, rad = 30 + r() * 90, sp = 6 + r() * 14;
+    s += `<circle cx="${f1((x + t * sp) % 1180 - 50)}" cy="${f1(y - Math.sin(t * .5 + i) * 30)}" r="${f1(rad)}" fill="#fff" opacity="${f1(0.06 + r() * 0.1)}" filter="url(#blur12)"/>`;
+  }
+  s += `<ellipse cx="540" cy="1290" rx="520" ry="110" fill="#fff4d6" opacity=".25" filter="url(#blur30)"/>`;
+  return s;
+}
+function bgRoom(opt = {}) {
+  const wall = opt.eve ? "url(#gWallEve)" : "url(#gWall)";
+  let s = `<rect width="1080" height="1260" fill="${wall}"/>`;
+  for (let x = 40; x < 1080; x += 90) s += `<rect x="${x}" y="0" width="34" height="1240" fill="#fff" opacity=".07"/>`;
+  s += `<rect y="1222" width="1080" height="34" fill="#f6e6d0"/><rect y="1252" width="1080" height="668" fill="url(#gFloor)"/>`;
+  for (let i = 0; i < 9; i++) { const y = 1252 + Math.pow(i / 9, 1.6) * 668; s += `<path d="M0 ${f1(y)} L1080 ${f1(y)}" stroke="#5e2f14" stroke-width="3" opacity=".35"/>`; }
+  for (let i = -6; i <= 6; i++) s += `<path d="M${540 + i * 40} 1252 L${540 + i * 260} 1920" stroke="#5e2f14" stroke-width="2" opacity=".2"/>`;
+  if (opt.frame !== false) {
+    s += `<g filter="url(#soft)"><rect x="${opt.frameX ?? 90}" y="300" width="200" height="250" rx="10" fill="#7a4a2a"/><rect x="${(opt.frameX ?? 90) + 16}" y="316" width="168" height="218" fill="#9fd4ff"/>`
+      + `<path d="M${(opt.frameX ?? 90) + 16} 534 L${(opt.frameX ?? 90) + 80} 430 L${(opt.frameX ?? 90) + 130} 490 L${(opt.frameX ?? 90) + 184} 420 L${(opt.frameX ?? 90) + 184} 534 Z" fill="#5fbf6a"/><circle cx="${(opt.frameX ?? 90) + 140}" cy="370" r="22" fill="#ffd84a"/></g>`;
+  }
+  s += `<ellipse cx="540" cy="1360" rx="560" ry="160" fill="url(#gPool)"/>`;
+  return s;
+}
+function plantDeco(x, y, s = 1) {
+  return g(tf(x, y, 0, s), `<path d="M-50 0 L50 0 L38 110 L-38 110 Z" fill="url(#gTerra)"/>`
+    + [[-40, -150, -20], [0, -190, 0], [40, -150, 20], [-60, -90, -40], [60, -90, 40]].map(([a, b, r]) => `<ellipse cx="${a}" cy="${b / 2}" rx="26" ry="${-b / 2}" fill="#4caf50" transform="rotate(${r} ${a} 0)"/>`).join(""), 'filter="url(#soft)"');
+}
+
+// ------------------------------------------------------------ props
+const coin = (x, y, r = 34, spin = 0) => g(tf(x, y, 0, 1), `<g transform="scale(${f1(Math.max(0.15, Math.abs(Math.cos(spin))))},1)"><circle r="${r}" fill="url(#gCoin)" stroke="#b07800" stroke-width="4"/><circle r="${r * 0.7}" fill="none" stroke="#d99a00" stroke-width="3"/><text y="${r * 0.38}" text-anchor="middle" font-size="${r * 1.1}" fill="#b07800">€</text></g>`);
+function pot(x, y) {
+  return g(tf(x, y), `<path d="M-120 0 L120 0 L95 200 L-95 200 Z" fill="url(#gTerra)"/><rect x="-135" y="-34" width="270" height="44" rx="12" fill="#c8623c"/><ellipse cx="0" cy="-30" rx="122" ry="16" fill="#3b2314"/><path d="M-80 30 L-60 180" stroke="#fff" stroke-width="10" opacity=".15"/>`, 'filter="url(#soft)"');
+}
+function wateringCan(x, y, rot) {
+  return g(tf(x, y, rot, 1), `<path d="M-60 -10 L60 -10 L54 90 L-54 90 Z" fill="#2fb7a6"/><path d="M50 10 L140 -50 L150 -38 L60 40 Z" fill="#259a8b"/><ellipse cx="150" cy="-46" rx="16" ry="22" fill="#1d7d71" transform="rotate(-50 150 -46)"/><path d="M-60 0 Q-110 30 -60 70" stroke="#259a8b" stroke-width="14" fill="none"/><rect x="-60" y="-14" width="120" height="16" rx="8" fill="#3fd2bf"/>`);
+}
+const bolt = (x, y, r) => g(tf(x, y, r), `<polygon points="-22,-13 0,-26 22,-13 22,13 0,26 -22,13" fill="#9aa4b0" stroke="#5c6672" stroke-width="4"/><circle r="9" fill="#5c6672"/>`);
+const screw = (x, y, r) => g(tf(x, y, r), `<rect x="-6" y="-8" width="12" height="52" rx="4" fill="#9aa4b0"/><path d="M-6 6 L6 10 M-6 18 L6 22 M-6 30 L6 34" stroke="#5c6672" stroke-width="3"/><ellipse cx="0" cy="-10" rx="20" ry="9" fill="#b8c1cb" stroke="#5c6672" stroke-width="3"/>`);
+function camera(x, y, r = 0, s = 1, flash = 0) {
+  return g(tf(x, y, r, s), `<rect x="-70" y="-46" width="140" height="92" rx="16" fill="#2b2f36"/><rect x="-40" y="-62" width="44" height="22" rx="6" fill="#2b2f36"/><circle cx="8" cy="2" r="34" fill="#11141a" stroke="#6f7a87" stroke-width="7"/><circle cx="0" cy="-6" r="10" fill="#7fb7ff" opacity=".6"/><rect x="40" y="-38" width="22" height="14" rx="4" fill="${flash > 0 ? "#fff" : "#cfd6de"}"/>`
+    + (flash > 0 ? `<circle cx="51" cy="-31" r="${f1(30 + flash * 60)}" fill="#fff" opacity="${f1(flash)}" filter="url(#blur12)"/>` : ""));
+}
+function tshirt(c = "#ff5b7f") { return `<path d="M-60 -50 L-25 -60 Q0 -40 25 -60 L60 -50 L85 -15 L58 0 L52 -18 L52 60 L-52 60 L-52 -18 L-58 0 L-85 -15 Z" fill="${c}"/><path d="M-25 -60 Q0 -40 25 -60" stroke="#fff" stroke-width="5" fill="none" opacity=".5"/>`; }
+function sneaker(c = "#ffffff") { return `<path d="M-70 10 Q-70 -30 -40 -36 L0 -40 Q20 -10 60 -6 Q80 0 80 20 L-70 20 Z" fill="${c}" stroke="#334" stroke-width="4"/><rect x="-72" y="18" width="154" height="14" rx="7" fill="#ff7a1a"/><path d="M-30 -30 L-20 -10 M-15 -32 L-5 -12" stroke="#ff4d6d" stroke-width="5"/>`; }
+function gamepad() { return `<path d="M-80 -10 Q-80 -45 -45 -45 L45 -45 Q80 -45 80 -10 L90 35 Q92 60 65 55 L40 25 L-40 25 L-65 55 Q-92 60 -90 35 Z" fill="#3b3f58"/><path d="M-55 -18 h30 M-40 -33 v30" stroke="#cfd6de" stroke-width="9" stroke-linecap="round"/><circle cx="40" cy="-25" r="8" fill="#ff4d6d"/><circle cx="58" cy="-10" r="8" fill="#4dd2ff"/><circle cx="22" cy="-10" r="8" fill="#ffd23f"/>`; }
+function sweater(c = "#4dbb8a") { return `<path d="M-55 -55 L-20 -62 Q0 -48 20 -62 L55 -55 L95 40 L70 50 L50 0 L50 65 L-50 65 L-50 0 L-70 50 L-95 40 Z" fill="${c}"/><path d="M-50 20 L50 20 M-50 35 L50 35" stroke="#fff" stroke-width="6" opacity=".4"/>`; }
+function lamp() { return `<path d="M-45 -60 L45 -60 L65 0 L-65 0 Z" fill="#ffcf5c"/><rect x="-6" y="0" width="12" height="70" fill="#6f7a87"/><ellipse cx="0" cy="74" rx="40" ry="10" fill="#6f7a87"/>`; }
+function teddy() { return `<circle cx="-30" cy="-58" r="18" fill="#a8693c"/><circle cx="30" cy="-58" r="18" fill="#a8693c"/><circle cy="-30" r="40" fill="#c4834f"/><ellipse cy="40" rx="48" ry="44" fill="#c4834f"/><ellipse cy="-20" rx="16" ry="12" fill="#f0c49a"/><circle cx="-14" cy="-38" r="5" fill="#222"/><circle cx="14" cy="-38" r="5" fill="#222"/>`; }
+function bike(s = 1) { return g(`scale(${s})`, `<circle cx="-110" cy="40" r="70" fill="none" stroke="#2b2f36" stroke-width="14"/><circle cx="110" cy="40" r="70" fill="none" stroke="#2b2f36" stroke-width="14"/><circle cx="-110" cy="40" r="8" fill="#6f7a87"/><circle cx="110" cy="40" r="8" fill="#6f7a87"/><path d="M-110 40 L-30 40 L40 -40 L-50 -40 Z M-30 40 L-60 -60 M40 -40 L110 40 M40 -40 L30 -80 L60 -84" fill="none" stroke="#e8443a" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/><rect x="-82" y="-72" width="50" height="14" rx="7" fill="#2b2f36"/>`); }
+function jeans(c = "url(#gJean)") { return `<path d="M-70 -110 L70 -110 L80 110 L18 110 L0 -20 L-18 110 L-80 110 Z" fill="${c}"/><rect x="-70" y="-110" width="140" height="22" fill="#24447f"/><path d="M-40 -88 Q-40 -60 -12 -58 M40 -88 Q40 -60 12 -58" stroke="#ffcf5c" stroke-width="3" fill="none" stroke-dasharray="6 5"/><path d="M0 -88 L0 -20" stroke="#24447f" stroke-width="4"/>`; }
+function parcel(x, y, w, h, r = 0, s = 1, label = true) {
+  return g(tf(x, y, r, s), `<rect x="${-w / 2}" y="${-h}" width="${w}" height="${h}" rx="8" fill="url(#gBox)"/><rect x="${-w / 2}" y="${-h}" width="${w}" height="${h * 0.16}" rx="6" fill="#c99560"/><rect x="-14" y="${-h}" width="28" height="${h}" fill="#e9cf9d" opacity=".9"/>`
+    + (label ? `<rect x="${w / 2 - 70}" y="${-h * 0.55}" width="54" height="38" rx="5" fill="#fff"/><path d="M${w / 2 - 62} ${-h * 0.55 + 20} l10 10 l22 -22" stroke="#21b573" stroke-width="7" fill="none" stroke-linecap="round"/>` : ""), 'filter="url(#soft)"');
+}
+function closet(x, y, fill = 1) {
+  let s = `<rect x="-200" y="-720" width="400" height="720" rx="14" fill="url(#gWood)"/><rect x="-180" y="-700" width="360" height="680" fill="#4a2a14"/>`
+    + `<path d="M-180 -640 L180 -640" stroke="#8a8f99" stroke-width="10"/>`;
+  const cols = ["#ff5b7f", "#4dbb8a", "#ffd23f", "#6aa8ff", "#c77dff", "#ff8a3d"];
+  for (let i = 0; i < 6; i++) { const cx = -150 + i * 60; s += g(tf(cx, -560, Math.sin(i * 2.1) * 6, 0.62), `<path d="M0 -130 L0 -100" stroke="#8a8f99" stroke-width="6"/>` + (i % 2 ? sweater(cols[i]) : tshirt(cols[i]))); }
+  s += g(tf(-80, -260, -15, .9), gamepad()) + g(tf(80, -300, 10, .8), sneaker("#fff")) + g(tf(60, -150, -5, .8), sneaker("#ffd23f"));
+  s += g(tf(-60, -120, 20, .7), teddy()) + g(tf(-10, -380, 0, .7), lamp());
+  // spilling pile
+  if (fill > 0) s += g(tf(-60, -10, -20, .8), tshirt("#6aa8ff")) + g(tf(90, -20, 15, .8), sweater("#ff8a3d")) + g(tf(-150, -10, 0, .7), sneaker("#ff5b7f"));
+  // open doors
+  s += `<path d="M-200 -720 L-290 -680 L-290 -40 L-200 0 Z" fill="#c78449"/><path d="M200 -720 L290 -680 L290 -40 L200 0 Z" fill="#a8693c"/><circle cx="-270" cy="-360" r="9" fill="#ffd23f"/><circle cx="270" cy="-360" r="9" fill="#ffd23f"/>`;
+  return g(tf(x, y), s, 'filter="url(#soft)"');
+}
+function monitor(x, y, state, t) {
+  // state: 0 = pub, 1 = explosé
+  let scr;
+  if (state < 1) {
+    const blink = Math.sin(t * 14) > 0;
+    scr = `<rect x="-300" y="-200" width="600" height="380" fill="url(#gMonitor)"/>`
+      + `<text x="0" y="-108" text-anchor="middle" font-size="58" fill="#fff" stroke="#7a1450" stroke-width="10" paint-order="stroke">DEVIENS</text>`
+      + `<text x="0" y="-38" text-anchor="middle" font-size="70" fill="${blink ? "#fff35c" : "#fff"}" stroke="#7a1450" stroke-width="10" paint-order="stroke">MILLIONNAIRE</text>`
+      + `<text x="0" y="28" text-anchor="middle" font-size="58" fill="#fff" stroke="#7a1450" stroke-width="10" paint-order="stroke">EN 1 CLIC !</text>`
+      + `<rect x="-150" y="66" width="300" height="80" rx="40" fill="${blink ? "#ff2d6f" : "#ff5b8f"}" stroke="#fff" stroke-width="6"/><text x="0" y="122" text-anchor="middle" font-size="44" fill="#fff">CLIQUE ICI</text>`
+      + ["-260,-160", "250,-150", "-250,120", "260,110"].map((p, i) => { const [a, b] = p.split(","); return `<text x="${a}" y="${b}" font-size="44" text-anchor="middle" fill="#fff35c" opacity="${(Math.sin(t * 9 + i) + 1) / 2}">$</text>`; }).join("");
+  } else {
+    scr = `<rect x="-300" y="-200" width="600" height="380" fill="#151515"/><path d="M-40 -40 L-160 -170 M-40 -40 L120 -190 M-40 -40 L-250 60 M-40 -40 L200 140 M-40 -40 L30 180 M-90 -110 L-20 -150" stroke="#9aa4b0" stroke-width="5" opacity=".7"/>`
+      + `<text x="0" y="40" text-anchor="middle" font-size="90" fill="#ff3b3b" opacity="${(Math.sin(t * 16) + 1) / 2 * .6 + .2}">ERREUR</text>`;
+  }
+  return g(tf(x, y), `<rect x="-60" y="200" width="120" height="110" fill="#5c6672"/><rect x="-160" y="300" width="320" height="30" rx="12" fill="#5c6672"/>`
+    + `<rect x="-330" y="-230" width="660" height="440" rx="30" fill="#2b2f36"/>` + scr
+    + (state < 1 ? `<rect x="-330" y="-230" width="660" height="440" rx="30" fill="none" stroke="#ff8ad0" stroke-width="10" opacity=".35" filter="url(#glow)"/>` : ""), 'filter="url(#soft)"');
+}
+function phone(x, y, r, s, t, st) {
+  // st: {listing, price, sold:[...]}
+  let scr = `<rect x="-215" y="-420" width="430" height="840" rx="40" fill="url(#gPhone)"/>`
+    + `<rect x="-215" y="-420" width="430" height="120" rx="40" fill="#21b573"/><rect x="-215" y="-340" width="430" height="40" fill="#21b573"/>`
+    + `<text x="0" y="-335" text-anchor="middle" font-size="46" fill="#fff">REVENTE</text>`;
+  if (st.listing > 0) {
+    const k = ez.back(st.listing);
+    scr += g(tf(0, lerp(500, 0, k)), `<rect x="-185" y="-270" width="370" height="560" rx="26" fill="#fff" stroke="#e1e6ee" stroke-width="4"/>`
+      + `<rect x="-160" y="-245" width="320" height="270" rx="18" fill="#ffe7c2"/>` + g(tf(0, -110, -6, .95), jeans())
+      + `<text x="-160" y="80" font-size="44" fill="#222">Jean vintage</text>`
+      + `<text x="-160" y="122" font-size="28" fill="#8a94a3">Taille 40 · Très bon état</text>`
+      + (st.price > 0 ? g(tf(0, 0), `<text x="-160" y="186" font-size="34" fill="#8a94a3">Autres : 22 €</text><path d="M-162 174 L60 174" stroke="#ff4d4d" stroke-width="5" opacity="${st.price}"/>`
+        + g(tf(-160, 250, 0, lerp(1.6, 1, ez.back(st.price))), `<rect x="-4" y="-48" width="300" height="64" rx="16" fill="#ffe14d"/><text x="12" y="0" font-size="44" fill="#222">Toi : 18 € ↓</text>`), `opacity="${st.price}"`) : ""));
+  }
+  return g(tf(x, y, r, s), `<rect x="-240" y="-450" width="480" height="900" rx="64" fill="#1c1f26"/><rect x="-236" y="-446" width="472" height="892" rx="60" fill="none" stroke="#4b5260" stroke-width="5"/>`
+    + scr + `<rect x="-60" y="-436" width="120" height="26" rx="13" fill="#1c1f26"/><path d="M-200 -420 L-120 -420 L-215 200 Z" fill="#fff" opacity=".08"/>`, 'filter="url(#soft)"');
+}
+function stepNumber(n, label, t, t0) {
+  const p = P(t, t0, 0.5), k = ez.el(p);
+  const wob = Math.sin((t - t0) * 6) * 3 * (1 - P(t, t0 + 0.5, 1));
+  return g(tf(540, 360, -8 + wob, 0.2 + 0.8 * k),
+    `<circle r="150" fill="#2b1650" opacity=".35" transform="translate(10,14)"/><circle r="150" fill="#fff" /><circle r="134" fill="url(#gNumber)"/>`
+    + `<text y="78" text-anchor="middle" font-size="230" fill="#fff" stroke="#8a2d00" stroke-width="14" paint-order="stroke">${n}</text>`
+    + g(tf(0, 196, 6), `<rect x="-150" y="-40" width="300" height="76" rx="38" fill="#2b1650"/><text y="20" text-anchor="middle" font-size="50" fill="#fff">${label}</text>`), `opacity="${clamp(p * 3)}"`);
+}
+function badge(x, y, txt, t, t0, col = "#21b573") {
+  if (t < t0) return "";
+  const k = ez.back(P(t, t0, 0.35));
+  return g(tf(x, y, -4, k), `<rect x="-200" y="-50" width="400" height="100" rx="50" fill="#fff" filter="url(#soft)"/><circle cx="-148" cy="0" r="34" fill="${col}"/><path d="M-164 0 l12 12 l22 -24" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round"/><text x="25" y="16" text-anchor="middle" font-size="46" fill="#222">${txt}</text>`);
+}
+function notif(y, txt, amt, k) {
+  return g(tf(lerp(1500, 540, ez.out(k)), y), `<rect x="-470" y="-62" width="940" height="124" rx="30" fill="#fff" filter="url(#soft)"/><circle cx="-400" cy="0" r="40" fill="#21b573"/><path d="M-420 0 l14 14 l26 -28" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round"/>`
+    + `<text x="-340" y="-6" font-size="46" fill="#21b573">VENDU !</text><text x="-340" y="38" font-size="32" fill="#5c6672">${txt}</text><text x="440" y="18" text-anchor="end" font-size="58" fill="#222">${amt}</text>`);
+}
+function confetti(cx, cy, t, t0, n = 60, seed = 3, words = false) {
+  if (t < t0) return "";
+  const r = rng(seed), dt = t - t0; let s = "";
+  const cols = ["#ff4d6d", "#ffd23f", "#4dd2ff", "#21e0a0", "#c77dff", "#ff8a3d"];
+  for (let i = 0; i < n; i++) {
+    const a = r() * Math.PI * 2, v = 500 + r() * 900, rot = r() * 360, spin = (r() - .5) * 900;
+    const x = cx + Math.cos(a) * v * dt * Math.exp(-dt * 1.2), y = cy + Math.sin(a) * v * dt * Math.exp(-dt * 1.2) + 500 * dt * dt;
+    const c = cols[i % cols.length];
+    if (words && i % 4 === 0) s += `<text x="${f1(x)}" y="${f1(y)}" font-size="${30 + (i % 3) * 8}" fill="${c}" stroke="#fff" stroke-width="5" paint-order="stroke" transform="rotate(${f1(rot + spin * dt * .2)} ${f1(x)} ${f1(y)})">ARNAQUE</text>`;
+    else s += `<rect x="${f1(x - 10)}" y="${f1(y - 6)}" width="20" height="12" fill="${c}" transform="rotate(${f1(rot + spin * dt)} ${f1(x)} ${f1(y)})"/>`;
+  }
+  return s;
+}
+function coinBurst(cx, cy, t, t0, n = 16, seed = 9) {
+  if (t < t0) return "";
+  const r = rng(seed), dt = t - t0; let s = "";
+  for (let i = 0; i < n; i++) {
+    const a = -Math.PI / 2 + (r() - .5) * 2.2, v = 700 + r() * 600;
+    const x = cx + Math.cos(a) * v * dt, y = cy + Math.sin(a) * v * dt + 1300 * dt * dt;
+    if (y > 2100) continue;
+    s += coin(x, y, 30, dt * 12 + i);
+  }
+  return s;
+}
+function flash(t, times, d = 0.14, max = .85) {
+  let o = 0; for (const x of times) if (t >= x && t < x + d) o = Math.max(o, max * (1 - (t - x) / d));
+  return o > 0 ? `<rect width="1080" height="1920" fill="#fff" opacity="${f1(o * 100) / 100}"/>` : "";
+}
+function camWrap(inner, cx, cy, z, rot = 0) {
+  return `<g transform="translate(540,960) rotate(${f1(rot)}) scale(${z.toFixed(4)}) translate(${f1(-cx)},${f1(-cy)})">${inner}</g>`;
+}
+function punch(lt) { return 1 + 0.07 * (1 - ez.out(P(lt, 0, 0.35))); }
+function shakeAt(t, t0, d = 0.5, amp = 22) { if (t < t0 || t > t0 + d) return [0, 0]; const k = 1 - (t - t0) / d; return [Math.sin(t * 90) * amp * k, Math.cos(t * 77) * amp * k]; }
+
+// ------------------------------------------------------------ scenes
+const BIPDEF = t => ({ t, mouth: mouthAt(t), blink: blinkAt(t) });
+
+const SCENES = {
+  hook(t, lt, S) {
+    const pp = ez.back(P(t, E.hook_pop, 0.5));
+    const y = lerp(2350, 1040, pp);
+    const land = P(t, E.hook_pop + 0.42, 0.25);
+    const squash = land > 0 && land < 1 ? Math.sin(land * Math.PI) * 1.2 : 0;
+    const glow = P(t, E.hook_eyes, 0.15);
+    const pt = ez.back(P(t, E.hook_point, 0.3));
+    const antOn = t > E.hook_point && t < E.hook_point + 1.0 ? (Math.sin((t - E.hook_point) * 28) > 0 ? 1 : 0.3) : 0.25;
+    const arms = [L2(POSE.rest[0], POSE.hip[0], pt), L2(POSE.rest[1], [70, 90], pt)];
+    const b = bip({ ...BIPDEF(t), x: 540, y, squash, glow, eyes: t < E.hook_eyes + 0.45 && t > E.hook_eyes ? "wide" : "normal", ant: antOn, antRot: Math.sin(t * 9) * 6 * (1 - pp) , arms, front: { r: pt > 0.05 }, rHand: lerp(1, 2.1, pt), rFinger: pt > 0.3, look: [0, -0.1] });
+    const world = bgStudio(t) + shadow(540, 1290, 260 * pp) + b;
+    return { world: camWrap(world, 540, lerp(980, 900, P(lt, 0, S.end - S.start)), 1.42 * punch(lt + 0.35) + lt * 0.02) };
+  },
+  plant(t, lt, S) {
+    const bx = 400, by = 1010, bs = 0.86;
+    const water = t >= E.plant_water[0] - 0.25 && t < E.plant_water[1];
+    const wk = ez.out(P(t, E.plant_water[0] - 0.25, 0.3)) * (1 - ez.out(P(t, E.plant_water[1] - 0.2, 0.25)));
+    const coinPhase = t < E.plant_coins[2] + 0.25;
+    let rT = coinPhase ? [292, -150] : water ? [260, -190] : [190, 160];
+    if (!coinPhase && !water) rT = L2([260, -190], [212, 190], ez.io(P(t, E.plant_water[1] - 0.2, 0.4)));
+    const stare = P(t, E.plant_stare - 0.6, 0.5);
+    const eyesK = t > E.plant_stare - 0.3 ? "sad" : "normal";
+    const lean = ez.io(stare) * 9;
+    const canItem = water ? (hx, hy) => wateringCan(hx + 40, hy + 10, lerp(0, 32, wk)) : null;
+    const coinItem = coinPhase ? (hx, hy) => coin(hx, hy - 20, 30, t * 6) : null;
+    let w = bgRoom({ frameX: 760 }) + plantDeco(120, 1120, 0.9);
+    w += `<rect x="560" y="1110" width="420" height="40" rx="10" fill="url(#gWood)"/><rect x="590" y="1150" width="30" height="110" fill="#7b4520"/><rect x="920" y="1150" width="30" height="110" fill="#7b4520"/>`;
+    w += shadow(bx, 1258, 230);
+    // falling coins into pot
+    let coins = "";
+    E.plant_coins.forEach((c, i) => {
+      const k = P(t, c, 0.2);
+      if (t >= c && k < 1) coins += coin(lerp(700, 760 - i * 18, k), lerp(880, 950, k * k), 28, t * 10);
+    });
+    const potS = pot(770, 980);
+    // water drops
+    let drops = "";
+    if (water && wk > 0.6) { const r = rng(11); for (let i = 0; i < 14; i++) { const ph = ((t * 2.2 + r()) % 1); drops += `<ellipse cx="${f1(735 + r() * 30 - ph * 30)}" cy="${f1(870 + ph * 90)}" rx="6" ry="10" fill="#7fd3ff" opacity=".9"/>`; } }
+    // nothing grows: tiny "?" bubble
+    let q = "";
+    if (t > E.plant_stare) { const k = ez.back(P(t, E.plant_stare, 0.3)); q = g(tf(770, 860, 0, k), `<text text-anchor="middle" font-size="110" fill="#fff" stroke="#3b2314" stroke-width="10" paint-order="stroke">?</text>`); }
+    const b = bip({ ...BIPDEF(t), x: bx, y: by, s: bs, rot: lean, arms: [POSE.rest[0], rT], rItem: canItem || coinItem, eyes: eyesK, look: [1, 0.5], smile: t > E.plant_stare ? -1 : 1 });
+    w += coins + potS + drops + q + b;
+    const z = lerp(1.05, 1.35, ez.io(P(lt, 0.3, S.end - S.start))) * punch(lt);
+    return { world: camWrap(w, lerp(560, 600, P(lt, 0, 3)), 980, z) };
+  },
+  shake(t, lt, S) {
+    const fk = ez.back(P(t, E.shake_flip, 0.35));
+    const sh = t > E.shake_flip + 0.25 && t < E.shake_drop[1] + 0.5 ? 1 : 0;
+    const x = 540 + Math.sin(t * 46) * 22 * sh, y = lerp(1010, 880, fk) + Math.cos(t * 39) * 16 * sh;
+    let w = bgRoom({ frameX: 120 }) + plantDeco(930, 1120, 0.9) + shadow(540, 1290, 200, .7);
+    // dropped items
+    const it = [[E.shake_drop[0], bolt, 470, -20], [E.shake_drop[1], screw, 610, 60]];
+    for (const [t0, fn, fx, rr] of it) {
+      if (t < t0) continue;
+      const dt = t - t0; let yy = 1100 + 1800 * dt * dt; let bounce = 0;
+      const land = Math.sqrt((1290 - 1100) / 1800);
+      if (dt > land) { const d2 = dt - land; yy = 1290 - Math.max(0, 260 * d2 - 1800 * d2 * d2); }
+      w += fn(fx, Math.min(1290, yy) - 10, rr + dt * 400 * (dt < land ? 1 : 0));
+    }
+    const sad = t > E.shake_drop[1] + 0.5;
+    const b = bip({ ...BIPDEF(t), x, y, rot: lerp(0, 180, fk), arms: sh ? [[-260 + Math.sin(t * 30) * 30, 60], [260, 60 + Math.cos(t * 30) * 30]] : POSE.rest, eyes: sad ? "sad" : fk > 0.5 ? "wide" : "normal", look: [0, sad ? -1 : 0], smile: sad ? -1 : 0, ant: 0.2, antRot: Math.sin(t * 40) * 12 * sh, tieRot: Math.sin(t * 30) * 25 * sh + (fk > 0.5 ? 0 : 0) });
+    w += b;
+    const [sx, sy] = shakeAt(t, E.shake_flip + 0.25, 1.6, 8);
+    return { world: camWrap(w, 540 + sx, 1000 + sy, 1.15 * punch(lt)) };
+  },
+  scam(t, lt, S) {
+    const boom = t >= E.scam_boom;
+    const reach = ez.io(P(t, E.scam_click - 0.55, 0.5)) * (1 - ez.out(P(t, E.scam_boom, 0.3)));
+    const cross = ez.back(P(t, E.scam_stamp + 0.25, 0.35));
+    const recoil = boom ? Math.exp(-(t - E.scam_boom) * 5) * 14 : 0;
+    let w = `<rect width="1080" height="1920" fill="url(#gNight)"/>` + `<rect y="1240" width="1080" height="680" fill="#1b1533"/>`
+      + `<rect x="300" y="1150" width="760" height="40" rx="12" fill="#4a2f22"/><rect x="340" y="1190" width="30" height="300" fill="#3a2418"/><rect x="990" y="1190" width="30" height="300" fill="#3a2418"/>`;
+    w += `<ellipse cx="660" cy="820" rx="520" ry="400" fill="${boom ? "#ff6b4a" : "#ff8ad0"}" opacity="${boom ? .18 : .22}" filter="url(#blur30)"/>`;
+    w += monitor(660, 780, boom ? 1 : 0, t);
+    if (boom) { const k = P(t, E.scam_boom, 1.2); w += `<circle cx="660" cy="760" r="${f1(80 + k * 300)}" fill="#999" opacity="${f1(.35 * (1 - k))}" filter="url(#blur30)"/>`; }
+    const arms = cross > 0 ? [L2(POSE.rest[0], POSE.cross[0], cross), L2(POSE.rest[1], POSE.cross[1], cross)] : [POSE.rest[0], L2(POSE.rest[1], [300, -40], reach)];
+    const eyesK = cross > 0.3 ? "flat" : boom ? "wide" : "normal";
+    w += shadow(260, 1300, 200, .6);
+    w += bip({ ...BIPDEF(t), x: 260, y: 1080, s: 0.82, rot: -recoil, arms, front: cross > 0 ? { l: true, r: true } : {}, eyes: eyesK, look: cross > 0.3 ? [-0.2, 0.1] : [1, -0.3], smile: cross > 0.3 ? 0 : 1, rFinger: !boom, ant: boom && t < E.scam_boom + 0.4 ? 1 : 0.2 });
+    w += confetti(660, 780, t, E.scam_boom, 70, 4, true);
+    const [sx, sy] = shakeAt(t, E.scam_boom, 0.6, 26);
+    const z = (boom ? 1.08 : lerp(1.0, 1.12, P(lt, 0, 0.9))) * punch(lt);
+    let ui = flash(t, [E.scam_boom], 0.18, 0.9);
+    if (t >= E.scam_stamp) {
+      const k = P(t, E.scam_stamp, 0.18);
+      ui += g(tf(560, 520, -12, lerp(2.6, 1, ez.in(k))), `<rect x="-330" y="-95" width="660" height="190" rx="22" fill="none" stroke="#ff2a2a" stroke-width="16"/><text y="55" text-anchor="middle" font-size="150" fill="#ff2a2a">ARNAQUE</text>`, `opacity="${f1(clamp(k * 2) * 0.95 * 100) / 100}"`);
+    }
+    return { world: camWrap(w, 560 + sx, 920 + sy, z), ui };
+  },
+  reveal(t, lt, S) {
+    const look = P(t, E.reveal_look, 0.25);
+    const ding = t >= E.reveal_ding;
+    const dk = P(t, E.reveal_ding, 0.6);
+    const lstart = LN.reveal.start;
+    const tChez = chunkT("chez", lstart);
+    const stand = ez.back(P(t, tChez - 0.6, 0.45));
+    let w = bgRoom({ eve: true, frame: false }) + closet(780, 1250, 1) + g(tf(560, 1250, 0, .9), bike(1)) + shadow(280, 1290, 210, .7);
+    w += `<rect x="70" y="330" width="170" height="210" rx="10" fill="#7a4a2a"/><rect x="84" y="344" width="142" height="182" fill="#ffcf8a"/>`;
+    const jump = ding ? Math.sin(Math.min(1, dk) * Math.PI) * 90 : 0;
+    const ant = ding ? 1 - 0.4 * P(t, E.reveal_ding + 1.2, 1) : 0.15;
+    const sit = stand < 0.5;
+    const arms = stand > 0 ? [POSE.rest[0], L2(POSE.lap[1], [290, -40], stand)] : POSE.lap;
+    const eyesK = ding ? (t < E.reveal_ding + 1.1 ? "wide" : "happy") : look > 0.5 ? "normal" : "sad";
+    const b = bip({ ...BIPDEF(t), x: 280, y: lerp(1100, 1020, stand) - jump, s: 0.8, sit, arms, front: stand > 0 ? {} : { l: true, r: true }, eyes: t > tChez + 0.2 ? "happy" : eyesK, look: look > 0 ? [lerp(-0.4, 1, look), lerp(0.6, 0, look)] : [-0.4, 0.6], smile: ding ? 1 : -1, ant, rFinger: stand > 0.5 });
+    w += b;
+    // camera : gros plan triste -> panoramique placard -> retour Bip au DING -> plan large
+    let cx = 300, cy = 950, z = 1.5;
+    const pan = ez.io(P(t, E.reveal_look + 0.1, 0.35));
+    cx = lerp(300, 760, pan); cy = lerp(950, 880, pan); z = lerp(1.5, 1.3, pan);
+    if (ding) { cx = 300; cy = 830; z = 1.55 - 0.45 * ez.io(P(t, E.reveal_ding + 0.9, 1.2)); cx = lerp(300, 560, ez.io(P(t, E.reveal_ding + 0.9, 1.2))); cy = lerp(830, 900, ez.io(P(t, E.reveal_ding + 0.9, 1.2))); }
+    const p2 = ding ? punch(t - E.reveal_ding) : 1;
+    let ui = "";
+    if (ding && t < E.reveal_ding + 0.2) ui += `<rect width="1080" height="1920" fill="#fff6c0" opacity="${f1((1 - P(t, E.reveal_ding, 0.2)) * 60) / 100}"/>`;
+    if (t > E.reveal_ding) ui += g(tf(540, 330, -6, ez.back(P(t, E.reveal_ding, 0.3))), `<text text-anchor="middle" font-size="150" fill="#ffe14d" stroke="#5a2a00" stroke-width="16" paint-order="stroke">DING !</text>`, `opacity="${f1(1 - P(t, E.reveal_ding + 0.9, 0.3))}"`);
+    if (t > tChez) ui += g(tf(560, 330, -4, ez.back(P(t, tChez, 0.35))), `<rect x="-280" y="-70" width="560" height="110" rx="55" fill="#ffe14d" filter="url(#soft)"/><text x="0" y="12" text-anchor="middle" font-size="64" fill="#3b2314">💡 TON PLACARD = €</text>`);
+    return { world: camWrap(w, cx, cy, z * p2 * punch(lt)), ui };
+  },
+  step1(t, lt, S) {
+    let w = bgRoom({ frame: false }) + closet(200, 1250, 0);
+    // boîte "À VENDRE"
+    w += `<g filter="url(#soft)"><rect x="700" y="1120" width="300" height="150" rx="10" fill="url(#gBox)"/><rect x="700" y="1120" width="300" height="30" fill="#c99560"/><text x="850" y="1225" text-anchor="middle" font-size="44" fill="#6b3d14">À VENDRE</text></g>`;
+    const items = [[tshirt, "#ff5b7f", 1], [sneaker, "#fff", 1], [gamepad, null, 1], [sweater, "#4dbb8a", 1], [lamp, null, .9], [teddy, null, .9], [bike, .55, 1]];
+    const starts = [[200, 700], [160, 1000], [250, 850], [150, 600], [210, 900], [120, 1150], [520, 1180]];
+    const ends = [[790, 1090], [900, 1080], [840, 1050], [780, 1030], [930, 1010], [860, 990], [850, 950]];
+    let pile = "";
+    items.forEach(([fn, arg, sc], i) => {
+      const t0 = E.step1_items[i]; const k = P(t, t0, 0.45);
+      if (t < t0) { if (i === 6) pile += g(tf(520, 1180, 0, 1), bike(.55)); return; }
+      const e = ez.io(k);
+      const [x0, y0] = starts[i], [x1, y1] = ends[i];
+      const x = lerp(x0, x1, e), y = lerp(y0, y1, e) - Math.sin(e * Math.PI) * 260;
+      const r = lerp(0, (i % 2 ? 1 : -1) * 360 + (i - 3) * 8, e);
+      pile += g(tf(x, y, r, 0.6 * sc), fn(arg ?? undefined));
+    });
+    // Bip court de gauche à droite
+    const run = Math.sin(lt * 2.4);
+    const bx = 470 + run * 120;
+    const yb = 1030 - Math.abs(Math.sin(lt * 9)) * 30;
+    w += shadow(bx, 1290, 200, .7) + bip({ ...BIPDEF(t), x: bx, y: yb, s: 0.75, rot: Math.cos(lt * 2.4) * 8, arms: [[-230, -60 + Math.sin(lt * 9) * 40], [230, -60 - Math.sin(lt * 9) * 40]], eyes: "happy", look: [run > 0 ? 1 : -1, 0], noBob: true, tieRot: Math.sin(lt * 9) * 18 });
+    w += pile;
+    let ui = stepNumber("1", "ÉTAPE", t, E.step1_num);
+    const tAn = chunkT("an,", LN.step1.start);
+    if (t > tAn - 0.1) ui += g(tf(820, 640, 8, ez.back(P(t, tAn - 0.1, 0.35))), `<rect x="-110" y="-110" width="220" height="220" rx="26" fill="#fff" filter="url(#soft)"/><rect x="-110" y="-110" width="220" height="64" rx="26" fill="#ff4d6d"/><rect x="-110" y="-70" width="220" height="24" fill="#ff4d6d"/><text y="62" text-anchor="middle" font-size="96" fill="#222">1 AN</text>`, `opacity="${f1(1 - P(t, LN.step1.end - 0.1, 0.3))}"`);
+    return { world: camWrap(w, 540, 1000, 1.08 * punch(lt)), ui };
+  },
+  step2(t, lt, S) {
+    let w = bgRoom({ frame: false });
+    // fenêtre lumineuse
+    w += `<rect x="40" y="200" width="420" height="640" rx="16" fill="#fff8e1"/><rect x="60" y="220" width="380" height="600" fill="#bfe6ff"/><path d="M60 600 Q200 520 300 580 T440 560 L440 820 L60 820 Z" fill="#8fd18a"/><circle cx="350" cy="330" r="60" fill="#fff3a0" filter="url(#glow)"/><path d="M250 220 L250 820 M60 520 L440 520" stroke="#fff8e1" stroke-width="16"/>`;
+    w += `<path d="M60 220 L440 220 L900 1250 L120 1450 Z" fill="url(#gSun)" opacity="${0.75 + 0.1 * Math.sin(t * 2)}"/>`;
+    // portant + jean
+    w += `<path d="M300 760 L300 1260 M560 760 L560 1260 M280 760 L580 760" stroke="#6f7a87" stroke-width="14" stroke-linecap="round"/>`;
+    w += g(tf(430, 800, Math.sin(t * 1.6) * 3), `<path d="M0 0 L0 20 M-70 60 L0 20 L70 60" stroke="#6f7a87" stroke-width="8" fill="none"/>` + g(tf(0, 175, 0, 1.15), jeans()), 'filter="url(#soft)"');
+    const snaps = E.step2_snaps;
+    let idx = -1; snaps.forEach((s, i) => { if (t >= s - 0.25) idx = i; });
+    const poses = [[790, 1030, 0, 0.78], [760, 1080, 10, 0.74], [820, 1000, -8, 0.8], [780, 1060, 6, 0.76]];
+    const [bx, by, br, bs] = idx < 0 ? [800, 1040, 0, 0.78] : poses[idx];
+    const fl = snaps.reduce((m, s) => Math.max(m, t >= s && t < s + 0.15 ? 1 - (t - s) / 0.15 : 0), 0);
+    const camItem = (hx, hy) => camera(hx - 70, hy - 10, 0, 1.15, fl);
+    w += shadow(bx, 1290, 190, .7) + bip({ ...BIPDEF(t), x: bx, y: by, s: bs, rot: br, arms: [[-175, -45], [-90, -25]], front: { l: true, r: true }, eyes: "squint", look: [1, 0], smile: 1 });
+    // caméra tenue devant (dessin séparé pour être au-dessus)
+    w += camera(bx - 150 * bs, by - 40 * bs, br, 1.0, fl);
+    let ui = stepNumber("2", "ÉTAPE", t, E.step2_num);
+    // polaroids
+    snaps.forEach((s, i) => {
+      if (t < s + 0.1) return;
+      const k = ez.back(P(t, s + 0.1, 0.35));
+      ui += g(tf(820 - i * 36, 640 + i * 26, -10 + i * 7, 0.55 * k), `<rect x="-130" y="-150" width="260" height="300" rx="8" fill="#fff" filter="url(#soft)"/><rect x="-110" y="-130" width="220" height="210" fill="#ffe7c2"/>` + g(tf(0, -25, 0, .8), jeans()));
+    });
+    const tx2 = chunkT("*deux*", LN.step2.start + 2);
+    if (t > tx2) ui += g(tf(250, 640, -10, ez.back(P(t, tx2, 0.35))), `<circle r="120" fill="#ffe14d" filter="url(#soft)"/><text y="40" text-anchor="middle" font-size="120" fill="#3b2314">×2</text><path d="M-200 -30 L-140 -30 M-220 10 L-140 10 M-200 50 L-140 50" stroke="#fff" stroke-width="12" stroke-linecap="round"/>`);
+    ui += flash(t, snaps, 0.12, 0.7);
+    return { world: camWrap(w, 560, 1000, (1.05 + 0.04 * (idx + 1)) * punch(lt)), ui };
+  },
+  step3(t, lt, S) {
+    let w = bgStudio(t);
+    const listing = P(t, E.step3_listing, 0.45), price = P(t, E.step3_price, 0.35);
+    const ching = t >= E.step3_ching;
+    const ck = P(t, E.step3_ching, 0.5);
+    w += phone(390, 1000, -5, 0.95, t, { listing, price });
+    // Bip tape sur le téléphone
+    const tap = Math.max(0, Math.sin(lt * 7)) * (t < LN.step3.end - 0.3 ? 1 : 0);
+    const jolt = ching ? Math.sin(Math.min(1, ck) * Math.PI) * 60 : 0;
+    const arms = ching ? POSE.up : [[-190 + tap * 30, -40 + tap * 30], POSE.hip[1]];
+    w += shadow(830, 1300, 170, .6);
+    w += bip({ ...BIPDEF(t), x: 830, y: 1080 - jolt, s: 0.72, arms, front: ching ? {} : { l: true }, eyes: ching ? "money" : t > LN.step3.end - 0.6 ? "wide" : "normal", look: ching ? [0, 0] : [-1, 0.2], smile: 1, ant: ching ? 1 - P(t, E.step3_ching + 0.6, 0.6) * 0.6 : 0.2, lFinger: !ching, squash: ching ? Math.sin(ck * Math.PI * 3) * (1 - ck) : 0 });
+    w += coinBurst(830, 870, t, E.step3_ching, 18);
+    let ui = stepNumber("3", "ÉTAPE", t, E.step3_num);
+    if (ching) ui = "";
+    const sold = [["Jean vintage", "+18 €"], ["Baskets", "+25 €"], ["Manette de jeu", "+15 €"], ["Vélo", "+60 €"]];
+    E.step3_sold.forEach((s, i) => { if (t >= s) ui += notif(200 + i * 140, sold[i][0], sold[i][1], P(t, s, 0.3)); });
+    if (ching) ui += g(tf(560, 1400, -4, ez.back(P(t, E.step3_ching, 0.3))), `<text text-anchor="middle" font-size="100" fill="#ffe14d" stroke="#5a2a00" stroke-width="14" paint-order="stroke">CHA-CHING !</text>`, `opacity="${f1(1 - P(t, E.step3_ching + 1.4, 0.3))}"`);
+    const [sx, sy] = shakeAt(t, E.step3_ching, 0.4, 14);
+    return { world: camWrap(w, 560 + sx, 1000 + sy, (ching ? 1.08 : 1.0) * punch(lt)), ui };
+  },
+  outro(t, lt, S) {
+    let w = bgRoom({ frameX: 800 });
+    const boxes = [[150, 1290, 220, 200, -3], [330, 1290, 160, 140, 4], [200, 1100, 180, 160, 6], [760, 1290, 200, 180, -4], [940, 1290, 180, 230, 3], [850, 1110, 160, 130, -7], [90, 960, 140, 120, -5], [980, 1060, 130, 110, 8]];
+    let bx = "";
+    boxes.forEach(([x, y, ww, hh, r], i) => { const k = ez.back(P(lt, 0.03 * i, 0.3)); bx += parcel(x, y, ww, hh, r, k); });
+    w += shadow(540, 1290, 220, .7) + bx;
+    const wink = t > E.outro_wink && t < E.outro_wink + 0.7;
+    w += bip({ ...BIPDEF(t), x: 540, y: 1030, s: 0.85, pose: "hip", eyes: wink ? "wink" : "happy", smile: 1 });
+    let ui = badge(330, 330, "0 € investi", t, chunkT("investissement", LN.outro.start - 1));
+    ui += badge(750, 470, "0 arnaque", t, chunkT("arnaque", LN.outro.start - 1));
+    return { world: camWrap(w, 540, lerp(980, 940, P(lt, 0, 4)), lerp(1.1, 1.22, ez.io(P(lt, 0, 4.5))) * punch(lt)), ui };
+  },
+  tie(t, lt, S) {
+    let w = bgRoom({ frameX: 800 });
+    const boxes = [[150, 1290, 220, 200, -3], [330, 1290, 160, 140, 4], [760, 1290, 200, 180, -4], [940, 1290, 180, 230, 3]];
+    boxes.forEach(([x, y, ww, hh, r]) => { w += parcel(x, y, ww, hh, r, 1); });
+    const adj = ez.io(P(t, E.tie_adjust, 0.25)) * (1 - ez.io(P(t, E.tie_fall - 0.05, 0.25)));
+    const fell = t >= E.tie_fall;
+    const bx = 540, by = 1030, bs = 0.85;
+    // cravate qui tombe
+    let tie = "";
+    if (fell) {
+      const ft = P(t, E.tie_fall, E.tie_land - E.tie_fall);
+      const x = bx + lerp(0, 70, ft), y = lerp(by + 34 * bs, 1225, ez.in(ft));
+      const r = lerp(0, -82, ez.in(ft));
+      const bounce = t > E.tie_land ? Math.max(0, Math.sin((t - E.tie_land) * 14) * Math.exp(-(t - E.tie_land) * 6)) * 30 : 0;
+      tie = g(tf(x, y - bounce, r, bs), g("translate(0,-34)", tieShape()));
+      if (t > E.tie_photo + 0.25) tie += g(tf(x + 150, 1150, 6, ez.back(P(t, E.tie_photo + 0.25, 0.35))), `<path d="M-90 -40 L120 -40 L120 40 L-90 40 L-130 0 Z" fill="#ffe14d" filter="url(#soft)"/><circle cx="-95" cy="0" r="9" fill="#fff"/><text x="10" y="18" text-anchor="middle" font-size="50" fill="#3b2314">5 €</text>`);
+    }
+    const look = P(t, E.tie_look, 0.25);
+    const camUp = ez.back(P(t, E.tie_photo - 0.55, 0.3));
+    const fl = t >= E.tie_photo && t < E.tie_photo + 0.15 ? 1 - (t - E.tie_photo) / 0.15 : 0;
+    let arms = adj > 0 ? [L2(POSE.rest[0], POSE.tie[0], adj), L2(POSE.rest[1], POSE.tie[1], adj)] : POSE.rest;
+    if (camUp > 0) arms = [L2(POSE.rest[0], [120, 170], camUp), L2(POSE.rest[1], [210, 150], camUp)];
+    const tVends = chunkT("vends", LN.tie.start);
+    const eyesK = t > tVends ? "wink" : fell && t < E.tie_look ? "wide" : camUp > 0.5 ? "squint" : "normal";
+    w += shadow(bx, 1290, 220, .7);
+    w += bip({ ...BIPDEF(t), x: bx, y: by, s: bs, rot: look * 6 - (t > tVends ? 6 : 0), arms, front: adj > 0 || camUp > 0 ? { l: true, r: true } : {}, tie: !fell, tieRot: adj > 0 ? Math.sin(t * 20) * 5 : 0, eyes: eyesK, look: t > tVends ? [0, 0] : look > 0 ? [0.5, 1] : [0, 0], smile: t > tVends ? 1 : fell ? 0 : 1 });
+    if (camUp > 0) w += camera(bx + 150 * bs, by + 130 * bs, 25, 0.95 * camUp, fl);
+    w += tie;
+    // caméra : zoom sur la cravate au sol
+    let cx = 540, cy = 960, z = 1.3;
+    const zf = ez.io(P(t, E.tie_land - 0.1, 0.25)) * (1 - ez.io(P(t, E.tie_photo - 0.7, 0.35)));
+    cx = lerp(cx, 610, zf); cy = lerp(cy, 1180, zf); z = lerp(z, 1.75, zf);
+    return { world: camWrap(w, cx, cy, z * punch(lt)), ui: flash(t, [E.tie_photo], 0.12, 0.6) };
+  },
+  final(t, lt, S) {
+    let w = bgStudio(t) + shadow(540, 1290, 240);
+    w += bip({ ...BIPDEF(t), x: 540, y: 1040, s: 1, pose: "wave", arms: [POSE.rest[0], [250 + Math.sin(t * 9) * 40, -180]], eyes: t > E.final_click ? "happy" : "normal", smile: 1, ant: (Math.sin(t * 10) > 0 ? 0.9 : 0.3) });
+    const bk = ez.back(P(t, E.final_button, 0.4));
+    const done = t >= E.final_click;
+    const pulse = done ? 1 : 1 + Math.sin(t * 8) * 0.04;
+    let ui = g(tf(540, 1790, 0, bk * pulse * (done ? lerp(0.85, 1, ez.back(P(t, E.final_click, 0.3))) : 1)),
+      `<rect x="-300" y="-72" width="600" height="144" rx="72" fill="${done ? "#5c6672" : "#ff2d55"}" filter="url(#soft)"/>`
+      + `<text x="${done ? 0 : 30}" y="22" text-anchor="middle" font-size="64" fill="#fff">${done ? "ABONNÉ ✓" : "ABONNE-TOI"}</text>`
+      + (done ? "" : g(tf(-215, 0, Math.sin(t * 12) * 14), `<path d="M-28 18 Q-28 -30 0 -32 Q28 -30 28 18 L36 26 L-36 26 Z" fill="#fff"/><circle cy="34" r="9" fill="#fff"/>`)));
+    if (t > E.final_click - 0.45) { const k = P(t, E.final_click - 0.45, 0.45); ui += g(tf(lerp(900, 600, ez.out(k)), lerp(1980, 1820, ez.out(k)), -20, done ? 0.9 : 1), `<path d="M0 0 L0 -70 Q0 -84 14 -84 Q28 -84 28 -70 L28 -30 L70 -22 Q86 -18 84 0 L76 50 L10 50 Z" fill="#fff" stroke="#222" stroke-width="6" stroke-linejoin="round"/>`); }
+    ui += confetti(540, 1790, t, E.final_click + 0.05, 50, 8);
+    return { world: camWrap(w, 540, lerp(900, 940, P(lt, 0, 4)), lerp(1.5, 1.3, ez.io(P(lt, 0, 1.2))) * punch(lt)), ui };
+  },
+};
+
+// ------------------------------------------------------------ subtitles
+function subtitle(t) {
+  const c = TL.chunks.find(c => t >= c.start && t < c.end);
+  if (!c) return "";
+  const plain = c.text.replace(/\*/g, "");
+  const fs = plain.length > 15 ? 84 : plain.length > 11 ? 96 : 108;
+  const k = P(t, c.start, 0.12);
+  const s = 1 + 0.16 * (1 - ez.out(k));
+  const words = c.text.split(" ").map(w => {
+    const kw = /^\*.*\*[,.!?:…]*$/.test(w) || /^\*.*\*$/.test(w);
+    const txt = w.replace(/\*/g, "").replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    return `<tspan fill="${kw ? "#ffe14d" : "#fff"}">${txt}</tspan>`;
+  }).join(" ");
+  return g(tf(540, 1580, 0, s), `<text text-anchor="middle" font-size="${fs}" fill="#fff" stroke="#000" stroke-width="${fs * 0.17}" stroke-linejoin="round" paint-order="stroke" xml:space="preserve">${words}</text>`);
+}
+
+// ------------------------------------------------------------ render
+const frameEl = document.getElementById("frame");
+function render(t) {
+  t = clamp(t, 0, TL.duration - 1e-3);
+  const S = TL.scenes.find(s => t >= s.start && t < s.end) || TL.scenes[TL.scenes.length - 1];
+  const r = SCENES[S.id](t, t - S.start, S);
+  let out = r.world;
+  out += `<rect width="1080" height="1920" fill="url(#gWarm)"/><rect width="1080" height="1920" fill="url(#gVignette)"/>`;
+  out += r.ui || "";
+  out += subtitle(t);
+  // micro-transition : léger fondu au blanc chaud sur chaque coupe
+  const cut = t - S.start;
+  if (S.start > 0 && cut < 0.08) out += `<rect width="1080" height="1920" fill="#fff4dc" opacity="${f1((1 - cut / 0.08) * 35) / 100}"/>`;
+  frameEl.innerHTML = out;
+}
+window.render = render;
+window.DURATION = TL.duration;
+
+// ------------------------------------------------------------ preview player
+const params = new URLSearchParams(location.search);
+if (params.has("render")) { document.body.classList.add("render"); }
+else {
+  const audio = new Audio("build/audio.wav");
+  const btn = document.getElementById("play"), scrub = document.getElementById("scrub"), tc = document.getElementById("tc");
+  scrub.max = TL.duration;
+  btn.onclick = () => { if (audio.paused) { audio.play(); btn.textContent = "❚❚ Pause"; } else { audio.pause(); btn.textContent = "▶ Lecture"; } };
+  scrub.oninput = () => { audio.currentTime = +scrub.value; };
+  audio.onended = () => { btn.textContent = "▶ Lecture"; };
+  const loop = () => { const t = audio.currentTime; render(t); scrub.value = t; tc.textContent = t.toFixed(1) + "s"; requestAnimationFrame(loop); };
+  document.fonts.load('800 50px "Baloo 2"').then(loop);
+}
+</script>
+</body>
+</html>
