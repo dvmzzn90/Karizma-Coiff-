@@ -6,7 +6,7 @@ Tout est généré par code :
 
 | Fichier | Rôle |
 |---|---|
-| `build_audio.py` | Voix FR neuronale Piper « Gilles » (modèle téléchargé automatiquement dans `voices/`), pitch +7 %, effet métallique discret — `VOICE=mbrola` pour revenir à l'ancienne voix, musique funky électro synthétisée, bruitages (bip, ding, cha-ching, boing, déclencheur photo…), ducking musique sous la voix, timeline partagée → `build/audio.wav`, `build/timeline.js` |
+| `build_audio.py` | Voix FR neuronale Piper « Gilles » (modèle téléchargé automatiquement dans `voices/`), voix aiguë de petit robot (≈ +8 demi-tons, formants préservés), timbre métallique — `VOICE=mbrola` pour revenir à l'ancienne voix, musique funky électro synthétisée, bruitages (bip, ding, cha-ching, boing, déclencheur photo…), ducking musique sous la voix, timeline partagée → `build/audio.wav`, `build/timeline.js` |
 | `bip.html` | Animation (personnage Bip, 11 scènes, caméra, sous-titres blancs bordés de noir + mots-clés en jaune). Ouvrir dans un navigateur pour un aperçu avec le son. |
 | `render.js` | Rendu image par image via Playwright + ffmpeg → MP4 |
 

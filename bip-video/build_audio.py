@@ -60,7 +60,7 @@ SCENES = [
         dict(say="Abonne-toi,|je te montre la suite pour aller encore plus loin !",
              sub="*Abonne-toi,*|je te montre la *suite* pour aller *encore* *plus* *loin* !")]),
 ]
-PAUSE = 0.32  # silence pour chaque "|"
+PAUSE = 0.2  # silence pour chaque "|"
 
 
 # ---------------------------------------------------------------- helpers
@@ -148,14 +148,17 @@ def tts(text, path):
         ensure_piper()
         # length_scale < 1 = débit un peu plus vif ; noise_w bas = diction plus nette
         subprocess.run(["python3", "-m", "piper", "-m", PIPER_MODEL, "-f", raw,
-                        "--length-scale", "1.0", "--noise-scale", "0.33", "--noise-w", "0.1",
-                        "--sentence-silence", "0.2"],
+                        "--length-scale", "0.97", "--noise-scale", "0.33", "--noise-w", "0.1",
+                        "--sentence-silence", "0.1"],
                        input=text.encode(), check=True, capture_output=True)
-    # Pitch +7 % sans changer la durée, légère couleur métallique (peigne court)
-    af = ("asetrate=16000*1.07,aresample=44100,atempo=0.9346,"
-          "highpass=f=110,lowpass=f=7600,"
-          "aecho=0.85:0.55:5:0.22,"
-          "equalizer=f=2800:t=q:w=1.2:g=3")
+    # Voix aiguë de petit robot : +22 % par rééchantillonnage (timbre plus « petit »)
+    # puis +30 % de hauteur avec formants préservés (diction nette), soit ≈ +8 demi-tons.
+    # Peigne court + présence pour le côté métallique sans perdre l'articulation.
+    af = ("asetrate=16000*1.22,aresample=44100,"
+          "rubberband=tempo=0.8197:pitch=1.30:formant=preserved:transients=crisp:pitchq=quality:smoothing=on,"
+          "highpass=f=150,lowpass=f=9500,"
+          "aecho=0.8:0.6:3.5:0.32,"
+          "equalizer=f=3200:t=q:w=1.0:g=4,equalizer=f=350:t=q:w=1.0:g=-3")
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", raw, "-af", af,
                     "-ac", "1", "-ar", str(SR), path], check=True)
     x = read_wav(path)
@@ -163,9 +166,9 @@ def tts(text, path):
     idx = np.where(np.abs(x) > 0.01)[0]
     if len(idx):
         x = x[max(0, idx[0] - 200): idx[-1] + 1500]
-    # ring-mod discret pour le côté robot (pas monotone)
+    # modulation en anneau légère : grain « robot » sans voix monotone
     t = np.arange(len(x)) / SR
-    x = x * (0.88 + 0.12 * np.sin(2 * np.pi * 95 * t))
+    x = x * (0.84 + 0.16 * np.sin(2 * np.pi * 150 * t))
     return x / (np.max(np.abs(x)) + 1e-9) * 0.92
 
 
