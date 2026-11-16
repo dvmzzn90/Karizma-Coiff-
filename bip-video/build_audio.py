@@ -122,10 +122,35 @@ def add(buf, sig, t, gain=1.0):
 
 
 # ---------------------------------------------------------------- voice
+# VOICE=gilles (défaut) : voix neuronale Piper, masculine, naturelle.
+# VOICE=mbrola          : ancienne voix espeak-ng + MBROLA fr1.
+VOICE = os.environ.get("VOICE", "gilles")
+PIPER_URL = "https://github.com/rhasspy/piper/releases/download/v0.0.2/voice-fr-gilles-low.tar.gz"
+PIPER_DIR = os.path.join(HERE, "voices", "fr-gilles-low")
+PIPER_MODEL = os.path.join(PIPER_DIR, "fr-gilles-low.onnx")
+
+
+def ensure_piper():
+    if not os.path.exists(PIPER_MODEL):
+        os.makedirs(PIPER_DIR, exist_ok=True)
+        tgz = os.path.join(PIPER_DIR, "voice.tar.gz")
+        subprocess.run(["curl", "-sSL", "-o", tgz, PIPER_URL], check=True)
+        subprocess.run(["tar", "xzf", tgz, "-C", PIPER_DIR], check=True)
+        os.remove(tgz)
+
+
 def tts(text, path):
     raw = path + ".raw.wav"
-    subprocess.run(["espeak-ng", "-v", "mb-fr1", "-s", "156", "-p", "58", "-a", "110",
-                    "-w", raw, text], check=True)
+    if VOICE == "mbrola":
+        subprocess.run(["espeak-ng", "-v", "mb-fr1", "-s", "156", "-p", "58", "-a", "110",
+                        "-w", raw, text], check=True)
+    else:
+        ensure_piper()
+        # length_scale < 1 = débit un peu plus vif ; noise_w bas = diction plus nette
+        subprocess.run(["python3", "-m", "piper", "-m", PIPER_MODEL, "-f", raw,
+                        "--length-scale", "1.0", "--noise-scale", "0.33", "--noise-w", "0.1",
+                        "--sentence-silence", "0.2"],
+                       input=text.encode(), check=True, capture_output=True)
     # Pitch +7 % sans changer la durée, légère couleur métallique (peigne court)
     af = ("asetrate=16000*1.07,aresample=44100,atempo=0.9346,"
           "highpass=f=110,lowpass=f=7600,"
@@ -142,6 +167,47 @@ def tts(text, path):
     t = np.arange(len(x)) / SR
     x = x * (0.88 + 0.12 * np.sin(2 * np.pi * 95 * t))
     return x / (np.max(np.abs(x)) + 1e-9) * 0.92
+
+
+def trim(x):
+    idx = np.where(np.abs(x) > 0.02 * np.max(np.abs(x)))[0]
+    return x[max(0, idx[0] - 200): idx[-1] + 1200] if len(idx) else x
+
+
+def piper_segments(segs, path):
+    """Synthétise la réplique entière (plus stable et plus naturel que des
+    fragments isolés), puis la recoupe aux pauses les plus longues pour
+    retrouver chaque segment « | »."""
+    parts = [s.strip().replace("...", "…") for s in segs]
+    full = " ".join(p for p in parts)
+    if full[-1] not in ".!?…":
+        full += "."
+    x = tts(full, path)
+    k = len(parts) - 1
+    if k == 0:
+        return [x]
+    hop = SR // 100
+    rms = np.array([np.sqrt(np.mean(x[i:i + hop] ** 2)) for i in range(0, len(x) - hop, hop)])
+    sil = rms < 0.05 * rms.max()
+    runs, i = [], 0
+    while i < len(sil):
+        if sil[i]:
+            j = i
+            while j < len(sil) and sil[j]:
+                j += 1
+            if i > 0 and j < len(sil):
+                runs.append((j - i, i, j))
+            i = j
+        else:
+            i += 1
+    cuts = sorted(sorted(runs, reverse=True)[:k], key=lambda r: r[1])
+    if len(cuts) < k:  # repli : découpe proportionnelle au texte
+        w = np.cumsum([len(p) for p in parts])[:-1] / sum(len(p) for p in parts)
+        bounds = [int(len(x) * f) for f in w]
+    else:
+        bounds = [int((a + b) / 2 * hop) for _, a, b in cuts]
+    edges = [0] + bounds + [len(x)]
+    return [trim(x[a:b]) for a, b in zip(edges[:-1], edges[1:])]
 
 
 def chunk_words(text, max_chars=17):
@@ -179,6 +245,8 @@ def build():
             sub = line["sub"].split("|")
             assert len(say) == len(sub), line
             lstart = t
+            spoken = [sy for sy in say if sy.strip(". ") != ""]
+            pieces = piper_segments(spoken, os.path.join(tmp, f"{s['id']}_{li}.wav")) if VOICE != "mbrola" else None
             for k, (sy, sb) in enumerate(zip(say, sub)):
                 if k:
                     t += PAUSE
@@ -187,7 +255,7 @@ def build():
                     timeline["chunks"].append(dict(text=sb, start=round(t, 3), end=round(t + 0.6, 3)))
                     t += 0.6
                     continue
-                x = tts(sy, os.path.join(tmp, f"{s['id']}_{li}_{k}.wav"))
+                x = pieces.pop(0) if pieces is not None else tts(sy, os.path.join(tmp, f"{s['id']}_{li}_{k}.wav"))
                 d = len(x) / SR
                 voice_parts.append((t, x))
                 chunks = chunk_words(sb)
