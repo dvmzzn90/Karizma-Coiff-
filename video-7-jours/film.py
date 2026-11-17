@@ -627,28 +627,25 @@ def font(size, black=True):
     return R[key]
 
 
-def caption_chunks(scene):
-    txt = scene["vo"].replace("…", "… ")
+def _chunk_words(text):
+    txt = text.replace("…", "… ")
     for p in ("?", "!", ":", ";"):
         txt = txt.replace(" " + p, "\u00a0" + p)
     words = [w for w in txt.split(" ") if w]
     chunks, cur = [], []
     for w in words:
         cur.append(w)
-        txt = " ".join(cur)
-        if len(txt) > 16 or (w[-1] in ".?!…," and len(txt) > 6):
+        t = " ".join(cur)
+        if len(t) > 16 or (w[-1] in ".?!…," and len(t) > 6):
             chunks.append(cur)
             cur = []
     if cur:
         chunks.append(cur)
-    # minutage proportionnel au nombre de lettres (+ pause après la ponctuation)
-    if scene["vo_len"]:
-        a, b = scene["start"] + timeline.VO_OFFSET, scene["start"] + timeline.VO_OFFSET + scene["vo_len"]
-    else:
-        a, b = scene["start"] + 0.2, scene["end"] - 0.25
-    wts = []
-    for c in chunks:
-        wts.append([len(w) + 2 + (4 if w[-1] in ".?!…" else 1.5 if w[-1] == "," else 0) for w in c])
+    return chunks
+
+
+def _time_words(chunks, a, b):
+    wts = [[len(w) + 2 + (4 if w[-1] in ".?!…" else 1.5 if w[-1] == "," else 0) for w in c] for c in chunks]
     tot = sum(sum(x) for x in wts)
     out, t = [], a
     for c, wt in zip(chunks, wts):
@@ -656,8 +653,24 @@ def caption_chunks(scene):
         for w in wt:
             times.append(t)
             t += (b - a) * w / tot
-        out.append((c, times, t))
+        out.append([c, times, t])
     return out
+
+
+def caption_chunks(scene):
+    """minutage des sous-titres : sur l'alignement réel de la voix s'il existe"""
+    if scene.get("pieces"):
+        base = scene["start"] + timeline.VO_OFFSET
+        out = []
+        for txt, a, b in scene["pieces"]:
+            out += _time_words(_chunk_words(txt), base + a, base + b)
+        # chaque sous-titre reste affiché jusqu'au suivant (max +0,7 s)
+        for i in range(len(out)):
+            nxt = out[i + 1][1][0] if i + 1 < len(out) else scene["end"]
+            out[i][2] = min(nxt, out[i][2] + 0.7)
+        return [tuple(x) for x in out]
+    a, b = scene["start"] + 0.2, scene["end"] - 0.25
+    return [tuple(x) for x in _time_words(_chunk_words(scene["vo"]), a, b)]
 
 
 CAPTIONS = []

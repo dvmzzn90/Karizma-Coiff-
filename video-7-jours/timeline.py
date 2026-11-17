@@ -24,7 +24,7 @@ SCENES = [
          vo="Et si demain… toute l'électricité du monde disparaissait. Pendant sept jours.",
          shots=[
              dict(img=2, w=0.45, cam=[(0, .5, .30, 1.30, 0), (1, .5, .60, 1.65, 0)], trans="black",
-                  grade=dict(bright=.9), fx=["twinkle"]),
+                  grade=dict(bright=.9), fx=["twinkle"], end_at=2),
              dict(img=1, w=0.55, cam=[(0, .45, .45, 1.05, 0), (1, .40, .50, 1.30, 0)], trans="whip",
                   act=("gamer", {}), fx=["screenglow"]),
          ]),
@@ -32,9 +32,9 @@ SCENES = [
          vo="Vingt heures pile. Tout s'éteint. La télé. Les lumières. Le téléphone. Absolument tout.",
          shots=[
              dict(img=1, w=0.22, cam=[(0, .40, .50, 1.30, 0), (1, .38, .48, 1.42, 0)], trans="cut",
-                  act=("gamer", {"cut": 0.25}), fx=["powercut"]),
+                  act=("gamer", {"cut": 0.25, "cut_at": 1}), fx=["powercut"], end_at=2),
              dict(img=3, w=0.34, cam=[(0, .40, .47, 1.15, -1.5), (1, .36, .44, 1.35, 1)], trans="glitch",
-                  act=("shock", {}), grade=dict(bright=.85), shake=.004, impacts=[0.0]),
+                  act=("shock", {}), grade=dict(bright=.85), shake=.004, impacts=[0.0], end_at=4),
              dict(img=5, w=0.44, cam=[(0, .40, .17, 1.32, 0), (.3, .40, .17, 1.36, 0), (.5, .40, .50, 1.36, 0),
                                       (.72, .40, .50, 1.40, 0), (.9, .40, .83, 1.36, 0), (1, .40, .84, 1.40, 0)],
                   trans="glitch", fx=["glitchpanels"]),
@@ -44,9 +44,9 @@ SCENES = [
          badge="JOUR 1",
          shots=[
              dict(img=4, w=0.30, cam=[(0, .50, .50, 1.05, 0), (1, .62, .58, 1.40, 2)], trans="whip",
-                  act=("phone", {}), grade=dict(bright=.9), shake=.002),
+                  act=("phone", {}), grade=dict(bright=.9), shake=.002, end_at=1),
              dict(img=6, w=0.40, cam=[(0, .45, .50, 1.10, -2), (1, .52, .45, 1.28, 1)], trans="flash",
-                  act=("street", {}), fx=["rain"], shake=.005),
+                  act=("street", {}), fx=["rain"], shake=.005, end_at=3),
              dict(img=7, w=0.30, cam=[(0, .38, .55, 1.05, 0), (1, .50, .45, 1.30, 0)], trans="whip",
                   act=("elevator", {}), grade=dict(bright=.9)),
          ]),
@@ -55,7 +55,7 @@ SCENES = [
          badge="JOUR 1",
          shots=[
              dict(img=8, w=0.50, cam=[(0, .30, .50, 1.20, 0), (1, .62, .47, 1.32, 0)], trans="whip",
-                  act=("reach", {}), fx=["dust"], shake=.002),
+                  act=("reach", {}), fx=["dust"], shake=.002, end_at=2),
              dict(img=9, w=0.50, cam=[(0, .40, .50, 1.10, 0), (.5, .70, .55, 1.45, 0), (.7, .32, .40, 1.50, 0),
                                       (1, .30, .38, 1.60, 0)], trans="whip",
                   act=("walk", {"hands": True}), impacts=[0.55]),
@@ -65,27 +65,27 @@ SCENES = [
          badge="JOUR 1",
          shots=[
              dict(img=10, w=0.32, cam=[(0, .55, .50, 1.05, 0), (1, .60, .42, 1.25, 0)], trans="whip",
-                  act=("walk", {}), shake=.002),
+                  act=("walk", {}), shake=.002, end_at=1),
              dict(img=11, w=0.33, cam=[(0, .50, .60, 1.05, 0), (1, .48, .62, 1.38, 0)], trans="whip",
-                  act=("paper", {}), impacts=[0.15]),
+                  act=("paper", {}), impacts=[0.15], end_at=2),
              dict(img=2, w=0.35, cam=[(0, .50, .58, 1.45, 0), (1, .50, .45, 1.20, 0)], trans="black",
                   grade=dict(night=True), fx=["lightning", "torches", "dust"]),
          ]),
     dict(n=6, dur=8.0,
          vo="Jour un. Jour trois. Jour cinq. Les réserves fondent, les bougies s'éteignent… et la peur s'installe.",
          shots=[
-             dict(img=12, w=1.0, cam=[(0, .5, .5, 1.0, 0), (.06, .5, .5, 1.0, 0), (.12, .25, .25, 2.0, 0),
-                                      (.30, .25, .25, 2.06, 0), (.36, .75, .25, 2.0, 0), (.56, .75, .25, 2.06, 0),
-                                      (.62, .25, .75, 2.0, 0), (.80, .25, .75, 2.06, 0), (.86, .75, .75, 2.0, 0),
-                                      (1, .75, .75, 2.18, 0)],
+             dict(img=12, w=1.0, cam=[(0, .5, .5, 1.0, 0), (.04, .25, .25, 2.0, 0),
+                                      (.15, .25, .25, 2.06, 0), (.19, .75, .25, 2.0, 0), (.29, .75, .25, 2.06, 0),
+                                      (.33, .25, .75, 2.0, 0), (.44, .25, .75, 2.06, 0), (.49, .75, .75, 2.0, 0),
+                                      (.78, .75, .75, 2.12, 0), (1, .75, .75, 2.25, 0)],
                   trans="black", act=("days", {}), fx=["candles", "dust"], grade=dict(bright=.85)),
          ]),
     dict(n=7, dur=7.0,
          vo="Jour sept. Toujours rien. Et puis, soudain… une lumière. Puis une autre.",
          badge="JOUR 7",
          shots=[
-             dict(img=13, w=1.0, cam=[(0, .45, .50, 1.0, 0), (.45, .50, .47, 1.15, 0), (1, .62, .42, 1.38, 0)],
-                  trans="black", act=("window", {"t_light": 0.5}), fx=["lightsback", "lantern13"]),
+             dict(img=13, w=1.0, cam=[(0, .45, .50, 1.0, 0), (.42, .50, .47, 1.12, 0), (1, .62, .42, 1.38, 0)],
+                  trans="black", act=("window", {"t_light": 0.66}), fx=["lightsback", "lantern13"]),
          ]),
     dict(n=8, dur=5.5,
          vo="Le courant revient ! Mais remettre tout le pays en marche… ça prendra du temps.",
@@ -97,9 +97,9 @@ SCENES = [
     dict(n=9, dur=6.5,
          vo="Ce qu'il faut retenir ? Être préparé. Ne pas dépendre que du numérique. Et savoir s'adapter.",
          shots=[
-             dict(img=16, w=1.0, cam=[(0, .35, .45, 1.10, 0), (.25, .60, .38, 1.35, 0), (.55, .70, .52, 1.40, 0),
-                                      (.85, .70, .64, 1.40, 0), (1, .62, .60, 1.30, 0)],
-                  trans="whip", act=("proud", {}), fx=["sunrays", "dust"], checks=[.30, .58, .85]),
+             dict(img=16, w=1.0, cam=[(0, .35, .45, 1.10, 0), (.20, .60, .38, 1.35, 0), (.40, .70, .52, 1.40, 0),
+                                      (.72, .70, .64, 1.40, 0), (1, .62, .60, 1.30, 0)],
+                  trans="whip", act=("proud", {}), fx=["sunrays", "dust"], checks=[.245, .43, .756]),
          ]),
     dict(n=10, dur=5.5,
          vo="Garde toujours de l'eau, de la nourriture, une lampe, une batterie… et une radio.",
@@ -136,25 +136,62 @@ def vo_file(n):
     return None
 
 
+def load_alignment():
+    p = os.path.join(VO_DIR, "alignement.json")
+    if os.path.exists(p):
+        return {int(k): v for k, v in json.load(open(p)).items()}
+    return {}
+
+
 def build():
-    """Calcule les temps absolus. Retourne (scenes, shots, total)."""
+    """Calcule les temps absolus. Retourne (scenes, shots, total).
+
+    Avec voix/alignement.json, un plan peut se terminer pile au début d'un bout de phrase
+    (clé end_at = index du morceau) et la coupure de courant tomber sur un mot (cut_at)."""
+    align = load_alignment()
     t = 0.0
     scenes, shots = [], []
-    for sc in SCENES:
+    for k, sc in enumerate(SCENES):
         vo = vo_file(sc["n"])
         dur = sc["dur"]
         vo_len = None
         if vo:
             vo_len = probe_duration(vo)
-            dur = vo_len + VO_OFFSET + VO_TAIL
-        s = dict(sc, start=t, end=t + dur, vo_path=vo, vo_len=vo_len)
+            tail = VO_TAIL + (1.6 if k == len(SCENES) - 1 else 0)
+            dur = vo_len + VO_OFFSET + tail
+        pieces = align.get(sc["n"]) if vo else None
+        s = dict(sc, start=t, end=t + dur, vo_path=vo, vo_len=vo_len, pieces=pieces)
         scenes.append(s)
-        tw = sum(sh["w"] for sh in sc["shots"])
+
+        def anchor(i):
+            return t + VO_OFFSET + pieces[i][1] - 0.04
+
+        # fins de plans
+        ends = [None] * len(sc["shots"])
+        for i, sh in enumerate(sc["shots"]):
+            if pieces and "end_at" in sh:
+                ends[i] = anchor(sh["end_at"])
+        ends[-1] = t + dur
         u = t
-        for sh in sc["shots"]:
-            d = dur * sh["w"] / tw
-            shots.append(dict(sh, start=u, end=u + d, scene=sc["n"]))
-            u += d
+        i = 0
+        while i < len(sc["shots"]):
+            j = i
+            while ends[j] is None:
+                j += 1
+            run = sc["shots"][i:j + 1]
+            tw = sum(x["w"] for x in run)
+            v = u
+            for x in run:
+                d = (ends[j] - u) * x["w"] / tw
+                sh = dict(x, start=v, end=v + d, scene=sc["n"])
+                if sh.get("act") and pieces and "cut_at" in sh["act"][1]:
+                    kw = dict(sh["act"][1])
+                    kw["cut"] = (anchor(kw.pop("cut_at")) - sh["start"]) / d
+                    sh["act"] = (sh["act"][0], kw)
+                shots.append(sh)
+                v += d
+            u = ends[j]
+            i = j + 1
         t += dur
     return scenes, shots, t
 

@@ -6,7 +6,13 @@
 - `film.py` : rendu image (caméra, animation du stickman, effets, sous-titres karaoké).
 - `son.py` : musique sombre + bruitages + mixage de la voix off (la musique baisse sous la voix).
 
-## Ajouter la voix off ElevenLabs
+## Voix off
+
+La voix actuelle est « Kevan – Narrateur Cinématique » (ElevenLabs, Eleven v4) : `voix/voix-complete-kevan.mp3`,
+découpée en `voix/01.wav` … `voix/12.wav`. `voix/alignement.json` donne le début et la fin de chaque morceau de phrase
+dans chaque clip : il sert à caler les plans (`end_at`, `cut_at`) et les sous-titres mot à mot.
+
+## Remplacer la voix off ElevenLabs
 
 1. Générer **un fichier par scène** avec les textes ci-dessous.
 2. Les nommer `01.mp3`, `02.mp3`, … `12.mp3` et les mettre dans `voix/`.
