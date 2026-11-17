@@ -1,6 +1,6 @@
 # 7 jours sans électricité — vidéo TikTok (9:16)
 
-- `7-jours-sans-electricite.mp4` : la vidéo (1080×1920, 30 i/s, ~76 s sans voix off).
+- `7-jours-sans-electricite.mp4` : la vidéo (1080×1920, 30 i/s, ~71 s, voix de Kevan).
 - `images/` : les 17 illustrations. `rig.json` : position du visage et des mains du stickman dans chaque image.
 - `timeline.py` : les 12 scènes (texte de voix off, plans, caméra, animations, effets).
 - `film.py` : rendu image (caméra, animation du stickman, effets, sous-titres karaoké).
